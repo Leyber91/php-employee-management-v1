@@ -2,11 +2,11 @@
 
 require('loginManager.php');
 
-$userEmail = $_POST['emailInput'];
-$userPassword = $_POST['passwordInput'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
 if (isset($userEmail)) {
-    $hasLoggedIn = logIn($userEmail, $userPassword);
+    $hasLoggedIn = logIn($email, $password);
     if ($hasLoggedIn) {
         header('Location: ../dashboard.php');
     } else {
