@@ -1,0 +1,22 @@
+.gridjs-td[data-column-id='email'] > span {
+	display: flex;
+	width: 100%;
+}
+
+.gridjs-td[data-column-id='email'] a {
+	margin-left: auto;
+	color: var(--smooth);
+	cursor: pointer;
+	font-size: x-large;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+.gridjs-td[data-column-id='email'] a:visited {
+	color: var(--smooth);
+}
+
+.gridjs-td[data-column-id='email'] a:focus, .gridjs-td[data-column-id='email'] a:hover {
+	color: var(--main);
+	text-decoration: underline;
+}
