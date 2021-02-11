@@ -19,7 +19,7 @@ body {
 	align-items: center;
 	background-color: var(--dark);
 	box-shadow: 2px 2px 10px #0008;
-	color: var(--smooth);
+	color: var(--light);
 	display: flex;
 	font-family: 'Lato', sans-serif;
 	justify-content: space-between;
