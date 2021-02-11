@@ -24,6 +24,7 @@
     <main>
         <div id="table-wrapper"></div>
     </main>
+    <?php include('../assets/html/footer.html'); ?>
 </body>
 
 </html>
