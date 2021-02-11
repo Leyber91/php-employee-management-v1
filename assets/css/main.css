@@ -5,11 +5,11 @@
     --dark: #17252a;
     --light: #feffff;
     --main: #3aafa9;
-    --seconary: #2b7a78;
+    --secondary: #2b7a78;
     --smooth: #def2f1;
 }
 body{
-    background-color: var(--seconary);
+    background-color: var(--secondary);
     margin:0;
     padding: 0;
 }
