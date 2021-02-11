@@ -1,0 +1,80 @@
+
+.modal-wrapper {
+    position: fixed;
+    z-index: 1;
+    background-color: #17252a38;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0%;
+}
+
+.modal-container {
+    font-family: 'Lato', sans-serif;
+}
+
+.deletion-modal-container {
+    background-color: var(--light);
+    border: 3px solid var(--dark);
+    border-radius: 8px;
+    animation: deletion-appear 0.3s forwards;
+}
+
+.deletion-modal {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 16px;
+}
+
+.deletion-modal .message .employee {
+    color: var(--secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.deletion-modal .message .employee:hover {
+    color: var(--dark);
+}
+
+.deletion-modal .button__delete {
+    cursor: pointer;
+    font-size: larger;
+    margin-top: 16px;
+    border: 1px solid var(--dark);
+    border-radius: 8px;
+    background-color: var(--light);
+    color: var(--secondary);
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.deletion-modal .button__delete:hover {
+    border-color: black;
+    color: var(--dark);
+}
+
+.deletion-modal .button__close {
+    position: absolute;
+    display: none;
+    right: 0;
+    top: 0;
+    color: var(--dark);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes deletion-appear {
+    from {
+        opacity: 0.5;
+        max-width: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-width: 600px;
+        max-height: 600px;
+    }
+}

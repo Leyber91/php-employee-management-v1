@@ -1,22 +1,67 @@
+.main {
+    background-color: var(--dark);
+}
+
+.gridjs-container {
+    font-family: 'Lato', sans-serif;
+}
+
+.gridjs-tbody {
+	cursor: pointer;
+}
+
+.gridjs-tbody > .gridjs-tr:hover .gridjs-td {
+	background-color: var(--smooth);
+}
+
+.gridjs-td[data-column-id='email'] {
+	width: fit-content;
+}
+
 .gridjs-td[data-column-id='email'] > span {
 	display: flex;
+	gap: 10px;
 	width: 100%;
 }
 
-.gridjs-td[data-column-id='email'] a {
+.gridjs-td a {
 	margin-left: auto;
-	color: var(--smooth);
+	color: var(--secondary);
 	cursor: pointer;
 	font-size: x-large;
 	font-weight: 400;
 	text-decoration: none;
 }
 
-.gridjs-td[data-column-id='email'] a:visited {
-	color: var(--smooth);
+.gridjs-td a:visited {
+	color: var(--secondary);
 }
 
-.gridjs-td[data-column-id='email'] a:focus, .gridjs-td[data-column-id='email'] a:hover {
+.gridjs-td a:focus, .gridjs-td a:hover {
+	color: var(--main);
+	text-decoration: underline;
+}
+
+.gridjs-td[data-column-id='delete'] {
+	text-align: center;
+}
+
+.gridjs-td[data-column-id='delete'] button {
+	background-color: transparent;
+	color: var(--secondary);
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: x-large;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+.gridjs-td button:visited {
+	color: var(--secondary);
+}
+
+.gridjs-td button:focus, .gridjs-td button:hover {
 	color: var(--main);
 	text-decoration: underline;
 }
