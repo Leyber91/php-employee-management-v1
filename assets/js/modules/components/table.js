@@ -1,25 +1,53 @@
 import { Grid, html, h } from 'https://unpkg.com/gridjs/dist/gridjs.production.es.min.js';
 import { EMPLOYEE_URL } from '../service/employee-service.js';
-import { createDeletionModal } from '../util/modals.js';
+import { createDeletionModal, createAddModal } from '../util/modals.js';
 
 const columns = [
 	{
 		id: 'id',
-		hidden: true,
+		hidden: true
 	},
-	'Name',
+	{
+		name: 'Name',
+		width: '20%'
+	},
 	{
 		name: 'Email',
+		width: '17%',
 		formatter: (_, row) =>
 			html(`
-				<span>${row.cells[2].data}</span>
-				<a href='mailto:${row.cells[2].data}' class="material-icons">email</a>`),
+				<div class="email-wrapper">
+					<span>${row.cells[2].data}</span>
+					<a href='mailto:${row.cells[2].data}' class="material-icons">email</a>
+				</div>`),
 	},
-	'Age',
-	'City',
-	'State',
-	'Phone Number',
 	{
+		name: 'Age',
+		width: '5%'
+	},
+	{
+		name: 'City',
+		width: '8%'
+	},
+	{
+		name: 'State',
+		width: '5%'
+	},
+	{
+		name: 'Phone Number',
+		width: '8%'
+	},
+	{
+		name:
+		h(
+			'button',
+			{
+				className: 'material-icons',
+				onClick: createAddModal,
+			},
+			'person_add'
+		),
+		width: '60px',
 		id: 'delete',
 		formatter: (_, row) =>
 			h(
@@ -54,6 +82,7 @@ const server = {
 
 const grid = new Grid({
 	sort: true,
+	autoWidth: false,
 	search: true,
 	pagination: true,
 	fixedHeader: true,

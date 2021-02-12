@@ -13,14 +13,8 @@
 
     <script type="module" src="/php-employee-management-v1/assets/js/index.js"></script>
     <script type="modules" src="/php-employee-management-v1/assets/js/modules"></script>
-    <script 
-        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" 
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" 
-        crossorigin="anonymous"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <title>Dashboard</title>
 </head>
 
@@ -29,6 +23,49 @@
     <main class='main'>
         <div id='table-wrapper'></div>
     </main>
+    <div class="add-modal modal-container">
+        <form action="http://localhost/php-employee-management-v1/src/library/employeeController.php" method="POST">
+            <div class="labeled-input">
+                <label for="name">Name</label>
+                <input type="text" name="name" required class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="email">Email</label>
+                <input type="email" name="email" required class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="age">Age</label>
+                <input type="number" name="age" required class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="age">Gender</label>
+                <input type="select" name="gender" class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="city">City</label>
+                <input type="text" name="city" class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="state">State</label>
+                <input type="text" name="state" required class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="street">Street</label>
+                <input type="text" name="street" class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="postalCode">Postal Code</label>
+                <input type="number" name="postalCode" class="add-modal__input">
+            </div>
+            <div class="labeled-input">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="phone" name="phoneNumber" required class="add-modal__input">
+            </div>
+            <label for="submit" hidden>Submit</label>
+            <input type="submit" name="submit" class="add-modal__input">
+        </form>
+    </div>
+
     <?php include('../assets/html/footer.html'); ?>
 </body>
 

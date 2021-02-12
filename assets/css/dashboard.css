@@ -2,6 +2,10 @@
     background-color: var(--dark);
 }
 
+#table-wrapper {
+	overflow: hidden;
+}
+
 .gridjs-container {
     font-family: 'Lato', sans-serif;
 }
@@ -49,10 +53,23 @@
 	width: fit-content;
 }
 
-.gridjs-td[data-column-id='email'] > span {
+.gridjs-td[data-column-id='age'], 
+.gridjs-td[data-column-id='state'],
+.gridjs-td[data-column-id='phoneNumber'],
+.gridjs-td[data-column-id='delete'],
+.gridjs-th[data-column-id='delete']
+{
+	text-align: center;
+}
+
+.gridjs-td[data-column-id='email'] .email-wrapper {
 	display: flex;
 	gap: 10px;
 	width: 100%;
+}
+
+.gridjs-td[data-column-id='email'] .email-wrapper span {
+	overflow: hidden;
 }
 
 .gridjs-td a {
