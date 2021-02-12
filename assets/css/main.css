@@ -120,6 +120,7 @@ footer > p > a:hover, footer > p > a:focus{
     max-width: 510px;
     overflow: hidden;
     overflow-y: scroll;
+    padding: 10px;
     position: relative;
     width: 80vw;
 }
@@ -139,7 +140,6 @@ footer > p > a:hover, footer > p > a:focus{
     color: var(--light);
     outline:none;
 }
-
 
 .avatarModal__image{
     width:fit-content;
@@ -175,13 +175,20 @@ footer > p > a:hover, footer > p > a:focus{
 
 .avatarModal__results__button:hover, .avatarModal__results__button:focus{
     border: 2px solid var(--smooth);
-    cursor: pointer;
     box-shadow: 1px 1px 5px #0008;
+    cursor: pointer;
+    outline: none;
 }
 .avatarModal__colors{
     margin: 5px;
 }
 .avatarModal__colors > p{
+    color:var(--light);
+    font-size: x-large;
+    font-family: 'Lato', sans-serif;
+    margin-left: 10px;
+}
+.avatarModal__hairColors > p{
     color:var(--light);
     font-size: x-large;
     font-family: 'Lato', sans-serif;
@@ -198,10 +205,13 @@ footer > p > a:hover, footer > p > a:focus{
 }
 
 .avatarModal__colors__button:hover, .avatarModal__colors__button:focus{
-    outline: none;
     border: 2px solid var(--light);
-    cursor: pointer;
     box-shadow: 0px 0px 5px var(--light);
+    cursor: pointer;
+    outline: none;
+}
+path, g, mask, svg{
+    pointer-events: none;
 }
 
 
