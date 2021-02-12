@@ -4,13 +4,10 @@ let modalWrapper = null;
 export function openModal(modal) {
 	closeModal();
 	modalWrapper = document.createElement('div');
-	modalWrapper.className = 'modal-wrapper';
+	modalWrapper.className = 'modal-wrapper appearing';
 
-	modalWrapper.addEventListener('click', (event) => {
-		if(event.target.classList.contains('modal-wrapper')) {
-			closeModal();
-		}
-	})
+	modalWrapper.addEventListener('click', closeModalOnClickOut)
+	modalWrapper.addEventListener('animationend', removeAppearingClass)
 
 	let modalContainer = document.createElement('div');
 	modalContainer.className = 'modal-container';
@@ -31,8 +28,22 @@ export function openModal(modal) {
 	document.body.appendChild(modalWrapper);
 }
 
+function closeModalOnClickOut(event) {
+	if(event.target === modalWrapper) {
+		closeModal()
+	}
+} 
+
+function removeAppearingClass(event) {
+	if(event.target === modalWrapper) {
+		modalWrapper.classList.remove('appearing')
+		modalWrapper.removeEventListener('animationend', removeAppearingClass)
+	}
+} 
+
 export function closeModal() {
 	if(modalWrapper) {
-		modalWrapper.remove();
+		modalWrapper.classList.add('disappearing')
+		modalWrapper.addEventListener('animationend', () => modalWrapper.remove())
 	}
 }

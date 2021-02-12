@@ -54,6 +54,7 @@ const server = {
 
 const grid = new Grid({
 	sort: true,
+	search: true,
 	pagination: true,
 	fixedHeader: true,
 	editing: true,
@@ -69,6 +70,31 @@ grid.on('rowClick', (...args) => {
 		console.log(args);
 	}
 });
+
+window.addEventListener('load', () => {
+	appendSearchIcon()
+	manageInputFocusEvents()
+})
+
+function appendSearchIcon() {
+	const gridJsSearch = document.querySelector('.gridjs-search')
+	const input = gridJsSearch.querySelector('input');
+	const searchIcon = document.createElement('i');
+	searchIcon.className = 'material-icons gridjs-search-icon';
+	searchIcon.innerText = 'search'
+	searchIcon.addEventListener('click', () => input.focus())
+	gridJsSearch.appendChild(searchIcon);
+}
+
+function manageInputFocusEvents() {
+	const input = document.querySelector('.gridjs-search input');
+	input.addEventListener('focusin', () => input.classList.add('unfolded'))
+	input.addEventListener('focusout', () => {
+		if(!input.value) {
+			input.classList.remove('unfolded')
+		}
+	})
+}
 
 export function update() {
 	grid.updateConfig({
