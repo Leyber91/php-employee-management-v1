@@ -73,7 +73,7 @@ export function createDeletionModal(event, employee) {
     delModal.innerHTML = `
     <button class="button__close material-icons">close</button>
     <div class="message"> Confirm deletion of <a class="employee">${employee.name}</a></div>
-    <button class="button__delete">Yes</button>
+    <button class="modal__input button__delete">Yes</button>
     `
     delModal.querySelector('.button__delete').addEventListener('click', () => {
         deleteEmployee(employee.id);

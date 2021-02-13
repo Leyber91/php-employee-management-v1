@@ -1,31 +1,5 @@
 [
     {
-        "id": "1",
-        "name": "Rack",
-        "lastName": "Lei",
-        "email": "jackon@network.com",
-        "gender": "man",
-        "city": "San Jone",
-        "streetAddress": "126",
-        "state": "CA",
-        "age": "24",
-        "postalCode": "394221",
-        "phoneNumber": "7383627627"
-    },
-    {
-        "id": "2",
-        "name": "John",
-        "lastName": "Doe",
-        "email": "jhondoe@foo.com",
-        "gender": "man",
-        "city": "New York",
-        "streetAddress": "89",
-        "state": "WA",
-        "age": "34",
-        "postalCode": "09889",
-        "phoneNumber": "1283645645"
-    },
-    {
         "id": "3",
         "name": "Leila",
         "lastName": "Mills",
@@ -37,19 +11,6 @@
         "age": "29",
         "postalCode": "098765",
         "phoneNumber": "9983632461"
-    },
-    {
-        "id": 4,
-        "name": "Richard",
-        "lastName": "Desmond",
-        "email": "dismond@foo.com",
-        "gender": "man",
-        "age": 30,
-        "streetAddress": "90",
-        "city": "Salt lake city",
-        "state": "UT",
-        "postalCode": "457320",
-        "phoneNumber": "90876987654"
     },
     {
         "id": 5,
