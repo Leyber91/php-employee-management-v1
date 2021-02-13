@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <script src="../assets/js/employee.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/4f8800fac8.js" crossorigin="anonymous"></script>
     <title>Employee</title>
 </head>
 
