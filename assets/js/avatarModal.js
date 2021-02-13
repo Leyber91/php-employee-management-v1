@@ -67,7 +67,6 @@ function printColors(optionName) {
   if (customColor[optionName] != undefined && optionName != "facialHair") {
     const propietyName = customColor[optionName].name;
     let colorPallete = "palette";
-    colorResults.innerHTML = `<p>Colors:</p>`;
     if (Avataaars.colors[propietyName] != undefined) {
       colorPallete = propietyName;
     }
@@ -97,7 +96,7 @@ function printColors(optionName) {
 
       node.innerHTML += $button;
 
-      node.style.display = "block";
+      node.style.display = "";
     }
   }
 }
