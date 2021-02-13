@@ -19,7 +19,7 @@ const columns = [
 				<div class="email-wrapper">
 					<span>${row.cells[2].data}</span>
 					<a href='mailto:${row.cells[2].data}' class="material-icons">email</a>
-				</div>`),
+				</div>`)
 	},
 	{
 		name: 'Age',

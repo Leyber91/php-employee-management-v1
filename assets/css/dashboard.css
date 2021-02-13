@@ -94,6 +94,7 @@
 	text-align: center;
 }
 
+.gridjs-th[data-column-id='delete'] button,
 .gridjs-td[data-column-id='delete'] button {
 	background-color: transparent;
 	color: var(--secondary);
@@ -105,10 +106,16 @@
 	text-decoration: none;
 }
 
+.gridjs-th[data-column-id='delete'] button {
+	color: green;
+}
+
+.gridjs-th button:visited,
 .gridjs-td button:visited {
 	color: var(--secondary);
 }
 
+.gridjs-th button:focus, .gridjs-th button:hover,
 .gridjs-td button:focus, .gridjs-td button:hover {
 	color: var(--main);
 	text-decoration: underline;
