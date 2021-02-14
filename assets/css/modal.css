@@ -102,6 +102,7 @@
 .deletion-modal .button__delete {
     cursor: pointer;
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 .deletion-modal .button__close {

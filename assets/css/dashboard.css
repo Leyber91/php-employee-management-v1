@@ -37,6 +37,7 @@
 	width: 0;
 	transition: width 0.6s, padding-left 0.6s;
 	cursor: pointer;
+	
 }
 
 .gridjs-search .gridjs-search-input.unfolded {

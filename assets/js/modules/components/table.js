@@ -12,13 +12,17 @@ const columns = [
 		width: '20%'
 	},
 	{
+		name: 'Role',
+		width: '20%'
+	},
+	{
 		name: 'Email',
 		width: '17%',
 		formatter: (_, row) =>
 			html(`
 				<div class="email-wrapper">
-					<span>${row.cells[2].data}</span>
-					<a href='mailto:${row.cells[2].data}' class="material-icons">email</a>
+					<span>${row.cells[3].data}</span>
+					<a href='mailto:${row.cells[3].data}' class="material-icons">email</a>
 				</div>`)
 	},
 	{
@@ -28,10 +32,6 @@ const columns = [
 	{
 		name: 'City',
 		width: '8%'
-	},
-	{
-		name: 'State',
-		width: '5%'
 	},
 	{
 		name: 'Phone Number',
@@ -72,10 +72,10 @@ const server = {
 		data.map((employee) => [
 			employee.id,
 			`${employee.name} ${employee.lastName}`,
+			employee.role,
 			employee.email,
 			employee.age,
 			employee.city,
-			employee.state,
 			employee.phoneNumber,
 		]),
 };
@@ -129,4 +129,6 @@ export function update() {
 	grid.updateConfig({
 		server: server,
 	}).forceRender();
+	appendSearchIcon()
+	manageInputFocusEvents()
 }
