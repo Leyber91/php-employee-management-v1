@@ -14,7 +14,7 @@
     <title>Employee</title>
 </head>
 
-<body class='employee' id='employee'>
+<body class='employee'>
     <?php include('../assets/html/header.html'); ?>
     <div id='image'></div>
     <?php include('../assets/html/footer.html'); ?>

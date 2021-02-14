@@ -2,8 +2,8 @@ import { Avataaars } from './avataaars.js';
 import { colorProperties } from './avatarOptions.js';
 
 export class avatar {
-	background = '#2321a9';
-	properties = {
+	properties = {	
+		background: undefined,
 		skin: 'tanned',
 		top: 'eyepatch',
 		hairColor: 'auburn',

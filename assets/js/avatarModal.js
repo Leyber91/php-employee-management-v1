@@ -21,11 +21,11 @@ export function createAvatarModal(properties) {
         </div>
     </div>`;
 
-  document.getElementById("employee").innerHTML += $modal;
+  document.body.innerHTML += $modal;
 
   printSelectOptions();
   printMainAvatar(myAvatar);
-  printResults(Object.keys(Avataaars.paths)[0], myAvatar);
+  printResults(myAvatar, Object.keys(Avataaars.paths)[0]);
   printColors(myAvatar, Object.keys(Avataaars.paths)[0]);
 
   avatarModalListeners(myAvatar);
@@ -37,32 +37,29 @@ function printSelectOptions() {
     if(option == 'nose') {
       return;
     }
-    $select.innerHTML += `<option value="${option}">${menuText[option]}</option>`;
+    $select.innerHTML += `<option ${option=='clothingGraphic' ? 'hidden' : ''} value="${option}">${menuText[option]}</option>`;
   });
 }
 
-export function printResults(optionName, myAvatar) {
+export function printResults(myAvatar, optionName) {
   const avatarResults = document.getElementById("avatarModalResults");
   let resultsHtml = "";
 
-  if(optionName == 'skin') {
-    resultsHtml += Object.keys(Avataaars.colors[optionName])
-    .map(type => getAvatarMiniature(myAvatar, optionName, type))
-    .join('')  
-  } else if (optionsWithBlank[optionName]) {
+  if (optionsWithBlank[optionName]) {
     resultsHtml += getAvatarMiniature(myAvatar, optionName, undefined);
   }
-  resultsHtml += Object.keys(Avataaars.paths[optionName])
-        .map(type => getAvatarMiniature(myAvatar, optionName, type))
-        .join('')
 
+  if(optionName == 'skin') {
+    resultsHtml += Object.keys(Avataaars.colors[optionName])
+      .map(type => getAvatarMiniature(myAvatar, optionName, type)).join('')  
+  } else {
+    resultsHtml += Object.keys(Avataaars.paths[optionName])
+      .map(type => getAvatarMiniature(myAvatar, optionName, type)).join('')
+  }
 
   avatarResults.innerHTML = resultsHtml;
 
   function getAvatarMiniature(myAvatar, optionName, type) {
-    if(optionName == 'eyebrow') {
-      console.log(type)
-    }
     const options = {
       width:100
     };
@@ -74,7 +71,7 @@ export function printResults(optionName, myAvatar) {
   }
 }
 
-export function printColors(myAvatar, optionName, current) {
+export function printColors(myAvatar, optionName) {
   const colorResults = document.getElementById("avatarModalColors");
   const hairColorsResults = document.getElementById("avatarModalHairColors");
   const colorTag = document.querySelector('.avatarModal__colorTag');
@@ -83,7 +80,7 @@ export function printColors(myAvatar, optionName, current) {
   if (customColor[optionName] != undefined && optionName != "facialHair" && optionName != "skin") {
     const propertyName = customColor[optionName].name;
     let colorPallete = "palette";
-    colorResults.style.maxWidth = "80px";
+    colorResults.style.maxWidth = "86px";
     colorTag.style.opacity = 1;
     colorResults.innerHTML = ''
                 
@@ -103,7 +100,7 @@ export function printColors(myAvatar, optionName, current) {
     }
     const propertyName = customColor[optionName].name;
     hairColorsResults.innerHTML = ``;
-    hairColorsResults.style.maxWidth = "80px";
+    hairColorsResults.style.maxWidth = "86px";
     hairColorTag.style.opacity = 1;
     printColorsInNode("hair", hairColorsResults, propertyName);
   } else {
@@ -115,17 +112,26 @@ export function printColors(myAvatar, optionName, current) {
     const currentValue = myAvatar.getProperty(propertyName);
     const colors = Object.keys(Avataaars.colors[colorPallete]);
 
+    let colorsHTML = "";
+
+    colorsHTML += '<div class="colors-container">'
     for (const colorName of colors) {
       const color = Avataaars.colors[colorPallete][colorName];
-
       const $button = `<button id="${colorName}" class="avatarModal__colors__button ${currentValue==colorName ? 'selected': ''}" style="background-color:${color};" data-property="${propertyName}" data-value="${colorName}"></button>`;
-
-      node.innerHTML += $button;
+      colorsHTML += $button;
     }
+    colorsHTML += '</div>'
+    node.innerHTML += colorsHTML
   }
 }
 
 export function printMainAvatar(myAvatar) {
+  if(myAvatar.getProperty('clothing') != 'graphicShirt') {
+    document.querySelector('#avatarOptions option[value="clothingGraphic"]').setAttribute('hidden', true);
+  } else {
+    document.querySelector('#avatarOptions option[value="clothingGraphic"]').removeAttribute('hidden');
+  }
+
   const mainAvatar = myAvatar.getAvatar({
     width: 300
   });

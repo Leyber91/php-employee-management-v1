@@ -51,7 +51,7 @@ function removeCloseModalListeners() {
 function changeAvatarOptionListener() {
   const avatarOptions = document.getElementById("avatarOptions");
   avatarOptions.addEventListener("change", function (event) {
-    printResults(event.target.value, avatar);
+    printResults(avatar, event.target.value);
     printColors(avatar, event.target.value);
   });
 }
@@ -62,7 +62,7 @@ function generateRandomAvatarListener() {
   randomButton.addEventListener("click", () => {
     avatar.randomize();
     printMainAvatar(avatar);
-    printResults(avatarOptions.value, avatar);
+    printResults(avatar, avatarOptions.value);
     printColors(avatar, avatarOptions.value);
   })
 }
@@ -70,7 +70,7 @@ function generateRandomAvatarListener() {
 function removeChangeAvatarOptionListener() {
   const avatarOptions = document.getElementById("avatarOptions");
   avatarOptions.removeEventListener("change", function (event) {
-    printResults(event.target.value, avatar);
+    printResults(avatar, event.target.value);
     printColors(avatar, event.target.value);
   });
 }
@@ -132,7 +132,7 @@ function changeMainAvatarPropertyByClick(event) {
     const value = target.dataset.value;
     avatar.changeProperty(property, value === 'undefined' ? undefined : value);
     printMainAvatar(avatar);
-    printResults(avatarOptions.value, avatar);
+    printResults(avatar, avatarOptions.value);
     printColors(avatar, avatarOptions.value);
   }
 }
