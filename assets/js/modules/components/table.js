@@ -5,15 +5,15 @@ import { createDeletionModal, createAddModal } from '../util/modals.js';
 const columns = [
 	{
 		id: 'id',
-		hidden: true
+		hidden: true,
 	},
 	{
 		name: 'Name',
-		width: '20%'
+		width: '20%',
 	},
 	{
 		name: 'Role',
-		width: '20%'
+		width: '20%',
 	},
 	{
 		name: 'Email',
@@ -23,23 +23,22 @@ const columns = [
 				<div class="email-wrapper">
 					<span>${row.cells[3].data}</span>
 					<a href='mailto:${row.cells[3].data}' class="material-icons">email</a>
-				</div>`)
+				</div>`),
 	},
 	{
 		name: 'Age',
-		width: '5%'
+		width: '5%',
 	},
 	{
 		name: 'City',
-		width: '8%'
+		width: '8%',
 	},
 	{
 		name: 'Phone Number',
-		width: '8%'
+		width: '8%',
 	},
 	{
-		name:
-		h(
+		name: h(
 			'button',
 			{
 				className: 'material-icons',
@@ -101,34 +100,34 @@ grid.on('rowClick', (...args) => {
 });
 
 window.addEventListener('load', () => {
-	appendSearchIcon()
-	manageInputFocusEvents()
-})
+	appendSearchIcon();
+	manageInputFocusEvents();
+});
 
 function appendSearchIcon() {
-	const gridJsSearch = document.querySelector('.gridjs-search')
+	const gridJsSearch = document.querySelector('.gridjs-search');
 	const input = gridJsSearch.querySelector('input');
 	const searchIcon = document.createElement('i');
 	searchIcon.className = 'material-icons gridjs-search-icon';
-	searchIcon.innerText = 'search'
-	searchIcon.addEventListener('click', () => input.focus())
+	searchIcon.innerText = 'search';
+	searchIcon.addEventListener('click', () => input.focus());
 	gridJsSearch.appendChild(searchIcon);
 }
 
 function manageInputFocusEvents() {
 	const input = document.querySelector('.gridjs-search input');
-	input.addEventListener('focusin', () => input.classList.add('unfolded'))
+	input.addEventListener('focusin', () => input.classList.add('unfolded'));
 	input.addEventListener('focusout', () => {
-		if(!input.value) {
-			input.classList.remove('unfolded')
+		if (!input.value) {
+			input.classList.remove('unfolded');
 		}
-	})
+	});
 }
 
 export function update() {
 	grid.updateConfig({
 		server: server,
 	}).forceRender();
-	appendSearchIcon()
-	manageInputFocusEvents()
+	appendSearchIcon();
+	manageInputFocusEvents();
 }

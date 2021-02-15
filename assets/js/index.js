@@ -1,1 +1,1 @@
-import './modules/components/table.js'
+import './modules/components/table.js';
