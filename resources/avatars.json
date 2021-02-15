@@ -154,8 +154,8 @@
             "facialHair": "default",
             "facialHairColor": "auburn",
             "clothing": "graphicShirt",
-            "clothingGraphic": "pizza",
-            "clothingColor": "black",
+            "clothingGraphic": "deer",
+            "clothingColor": "red",
             "eyes": "default",
             "eyebrows": "defaultNatural",
             "mouth": "default"
@@ -180,6 +180,24 @@
             "mouth": "default"
         },
         "id": "14"
+    },
+    {
+        "properties": {
+            "skin": "light",
+            "top": "shortFlat",
+            "hairColor": "black",
+            "hatColor": "blue02",
+            "accessoriesColor": "black",
+            "facialHair": "default",
+            "facialHairColor": "auburn",
+            "clothing": "graphicShirt",
+            "clothingGraphic": "diamond",
+            "clothingColor": "pastelGreen",
+            "eyes": "eyeRoll",
+            "eyebrows": "defaultNatural",
+            "mouth": "twinkle"
+        },
+        "id": "15"
     },
     {
         "properties": {
@@ -306,6 +324,24 @@
             "mouth": "default"
         },
         "id": "24"
+    },
+    {
+        "properties": {
+            "skin": "light",
+            "top": "dreads01",
+            "hairColor": "blonde",
+            "hatColor": "gray01",
+            "accessoriesColor": "black",
+            "facialHair": "default",
+            "facialHairColor": "auburn",
+            "clothing": "graphicShirt",
+            "clothingGraphic": "dumbia",
+            "clothingColor": "blue03",
+            "eyes": "default",
+            "eyebrows": "default",
+            "mouth": "twinkle"
+        },
+        "id": "25"
     },
     {
         "properties": {
