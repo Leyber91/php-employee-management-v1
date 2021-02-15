@@ -55,6 +55,24 @@
     },
     {
         "properties": {
+            "skin": "tanned",
+            "top": "eyepatch",
+            "hairColor": "auburn",
+            "hatColor": "blue02",
+            "accessoriesColor": "black",
+            "facialHair": "default",
+            "facialHairColor": "auburn",
+            "clothing": "shirtCrewNeck",
+            "clothingGraphic": "pizza",
+            "clothingColor": "black",
+            "eyes": "default",
+            "eyebrows": "defaultNatural",
+            "mouth": "default"
+        },
+        "id": "4"
+    },
+    {
+        "properties": {
             "skin": "light",
             "top": "bob",
             "hairColor": "blonde",
@@ -275,12 +293,12 @@
     {
         "properties": {
             "skin": "light",
-            "top": "dreads02",
+            "top": "shaggy",
             "hairColor": "black",
             "hatColor": "pastelGreen",
             "accessoriesColor": "black",
             "facialHair": "moustaceFancy",
-            "facialHairColor": "brown",
+            "facialHairColor": "black",
             "clothing": "graphicShirt",
             "clothingGraphic": "skrull",
             "clothingColor": "black",
