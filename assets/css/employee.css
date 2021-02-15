@@ -1,0 +1,11 @@
+
+.employee__page {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.employee__role {
+    margin-top: 0;
+}

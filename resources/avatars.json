@@ -1,8 +1,22 @@
 [
     {
         "id": 1,
-        "properties": {
-
+        "properties": {	
+            "background": null,
+            "skin": "tanned",
+            "top": "eyepatch",
+            "hairColor": "auburn",
+            "hatColor": "blue02",
+            "accessories": null,
+            "accessoriesColor": "black",
+            "facialHair": "default",
+            "facialHairColor": "auburn",
+            "clothing": "shirtCrewNeck",
+            "clothingGraphic": "pizza",
+            "clothingColor": "black",
+            "eyes": "default",
+            "eyebrows": "defaultNatural",
+            "mouth": "default"
         },
         "imageHref": ""
     },

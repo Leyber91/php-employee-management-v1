@@ -2,7 +2,7 @@
 
 define("EMPLOYEES_JSON_PATH", $_SERVER["DOCUMENT_ROOT"] . "/php-employee-management-v1/resources/employees.json");
 
-require('helper.php');
+require_once('helper.php');
 
 function addEmployee(array $newEmployee)
 {
@@ -67,6 +67,12 @@ function getEmployee(string $id)
     $employee = findItemWithId($employees, $id)->value;
 
     return encodeJson($employee);
+}
+
+function getEmployeeAsArray(string $id)
+{
+    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
+    return findItemWithId($employees, $id)->value;
 }
 
 function removeAvatar($id)

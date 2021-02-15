@@ -2,7 +2,7 @@
 
 define("AVATARS_JSON_PATH", $_SERVER["DOCUMENT_ROOT"] . "/php-employee-management-v1/resources/avatars.json");
 
-require('helper.php');
+require_once('helper.php');
 
 function addAvatar(array $newAvatar)
 {
@@ -61,19 +61,11 @@ function getAvatars(array $ids = [])
     return encodeJson(array_values($foundAvatars));
 }
 
-function removeAvatar($id)
+function getAvatarAsArray(int $id)
 {
-    // TODO implement it
+    $avatars = decodeJsonFile(AVATARS_JSON_PATH);
+    $avatar = findItemWithId($avatars, $id)->value;
+    
+    return encodeJson($avatar);
 }
 
-function getQueryStringParameters(): array
-{
-    // TODO implement it
-    return  array();
-}
-
-function getNextIdentifier(array $employeesCollection): int
-{
-    // TODO implement it
-    return 0;
-}

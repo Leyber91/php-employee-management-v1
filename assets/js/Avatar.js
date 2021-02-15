@@ -4,13 +4,16 @@ import { DEF, FEMALE_DEF, MALE_DEF } from './default.js';
 
 export class Avatar {
 
-	constructor(gender = 'male') {
+	constructor(gender = 'male', properties = undefined) {
 		if (gender == 'male') {
 			this.properties = MALE_DEF;
 		} else if (gender == 'female') {
 			this.properties = FEMALE_DEF;
 		} else {
 			this.properties = DEF;
+		}
+		if(properties) {
+			this.properties = properties;
 		}
 	}
 
