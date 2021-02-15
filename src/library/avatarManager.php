@@ -61,7 +61,7 @@ function getAvatars(array $ids = [])
     return encodeJson(array_values($foundAvatars));
 }
 
-function getAvatarAsArray(int $id)
+function getAvatar(int $id)
 {
     $avatars = decodeJsonFile(AVATARS_JSON_PATH);
     $avatar = findItemWithId($avatars, $id)->value;

@@ -4,7 +4,7 @@ import { DEF, FEMALE_DEF, MALE_DEF } from './default.js';
 
 export class Avatar {
 
-	constructor(gender = 'male', properties = undefined) {
+	constructor(gender = 'male', properties = {}) {
 		if (gender == 'male') {
 			this.properties = MALE_DEF;
 		} else if (gender == 'female') {
@@ -12,9 +12,8 @@ export class Avatar {
 		} else {
 			this.properties = DEF;
 		}
-		if(properties) {
-			this.properties = properties;
-		}
+		Object.entries(properties).forEach(([key, value]) => this.properties[key] = value)
+		
 	}
 
 	getAvatar = (properties = {}) => {

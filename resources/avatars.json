@@ -6,7 +6,7 @@
             "skin": "tanned",
             "top": "eyepatch",
             "hairColor": "auburn",
-            "hatColor": "blue02",
+            "hatColor": "black",
             "accessories": null,
             "accessoriesColor": "black",
             "facialHair": "default",
@@ -16,7 +16,7 @@
             "clothingColor": "black",
             "eyes": "default",
             "eyebrows": "defaultNatural",
-            "mouth": "default"
+            "mouth": "grimace"
         },
         "imageHref": ""
     },

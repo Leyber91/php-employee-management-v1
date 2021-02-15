@@ -3,8 +3,8 @@ import { Avatar } from "./Avatar.js";
 import { avatarModalListeners } from "./avatarModalListeners.js";
 import { customColor, optionsWithBlank, menuText } from "./avatarOptions.js";
 
-export function createAvatarModal(properties) {
-  const myAvatar = new Avatar(properties);
+export function createAvatarModal(gender, properties, onClose = () => "") {
+  const myAvatar = new Avatar(gender, properties);
 
   const $modal = `
     <div id="avatarModalBackground" class="avatarModal__background">
@@ -28,7 +28,7 @@ export function createAvatarModal(properties) {
   printResults(myAvatar, Object.keys(Avataaars.paths)[0]);
   printColors(myAvatar, Object.keys(Avataaars.paths)[0]);
 
-  avatarModalListeners(myAvatar);
+  avatarModalListeners(myAvatar, onClose);
 }
 
 function printSelectOptions() {

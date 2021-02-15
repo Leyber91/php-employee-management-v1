@@ -26,27 +26,57 @@ include('./library/avatarManager.php');
   <?php include('../assets/html/header.html'); ?>
   <?php
   $employee = getEmployeeAsArray($_GET['id']);
-  $avatar = getAvatarAsArray($employee['id']);
+  $avatar = getAvatar($employee['id']);
 
   echo "<section class='employee__page'>
         <div class='employee__avatar'></div>
         <h2 class='employee__name'>" . $employee['name'] . " " . $employee['lastName'] . "</h2>
         <h5 class='employee__role'>" . $employee['role'] . "</h5>
-      </section>"
+        <div class='employee__contact'>
+          <div class='employee__email'>
+            <a href='mailto:".$employee['email']."'>          
+              <span class='material-icons contact__icon'>email</span>
+            </a>
+          </div>
+          <div class='employee__phone'>
+            <a href='callto:".$employee['phoneNumber']."'>          
+              <span class='material-icons contact__icon'>stay_primary_portrait</span>
+            </a>
+
+          </div>
+          <div class='awesome employee__linkedin'>
+            <a href='".$employee['linkedinLink']."'>      
+              <i class='fab fa-linkedin contact__icon'></i>    
+            </a>
+          </div>
+          <div class='awesome employee__github'>
+            <a href='".$employee['githubLink']."'>   
+              <i class='fab fa-github contact__icon'></i>       
+            </a>
+          </div>
+        </div>
+        </section>"
 
   ?>
   <?php include('../assets/html/footer.html'); ?>
 
   <script type="module">
     import { Avatar } from '../assets/js/Avatar.js'
+    import { createAvatarModal } from "../assets/js/avatarModal.js";
 
-    const avatarContainer = document.querySelector('.employee__avatar');
-    const avatarProps = JSON.parse(<?php echo json_encode($avatar); ?>);
-    const avatar = new Avatar('male', avatarProps.properties);
+    let $avatarContainer = document.querySelector('.employee__avatar');
+    let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
+    let avatarObj = JSON.parse(<?php echo json_encode($avatar); ?>);
+    avatarObj = avatarObj ? avatarObj : {properties: {}};
+    let avatar = new Avatar(employee.gender, avatarObj.properties);
     
-    avatarContainer.innerHTML = avatar.getAvatar({
+    $avatarContainer.innerHTML = avatar.getAvatar({
       width: 200
     });
+    let callback = (avatarProps) => {
+      console.log(avatarProps)
+    }
+    $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatarObj.properties, callback))
   </script>
 
 </body>
