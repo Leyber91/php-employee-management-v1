@@ -14,9 +14,9 @@ export function createAvatarModal(properties) {
             <select name="avatarOptions" id="avatarOptions"> </select>
             <button id="avatarRandom__button"><i class="fas fa-random"></i></button>
             <div id="avatarModalResults" class="avatarModal__results"></div>
-            <span class="avatarModal__colorTag">Colour</span>
+            <span class="avatarModal__colorTag">Color</span>
             <div id="avatarModalColors" class="avatarModal__colors"></div>
-            <span class="avatarModal__hairColorTag">Hair colour</span>
+            <span class="avatarModal__hairColorTag">Hair color</span>
             <div id="avatarModalHairColors" class="avatarModal__hairColors"></div>
         </div>
     </div>`;
