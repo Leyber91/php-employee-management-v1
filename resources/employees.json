@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "avatarId": 1,
         "name": "Pau",
         "lastName": "García",
         "role": "Tech Lead",

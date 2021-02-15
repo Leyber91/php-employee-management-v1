@@ -1,10 +1,10 @@
 import { Avataaars } from "./avataaars.js";
-import { avatar } from "./avatarClass.js";
+import { Avatar } from "./Avatar.js";
 import { avatarModalListeners } from "./avatarModalListeners.js";
 import { customColor, optionsWithBlank, menuText } from "./avatarOptions.js";
 
 export function createAvatarModal(properties) {
-  const myAvatar = new avatar(properties);
+  const myAvatar = new Avatar(properties);
 
   const $modal = `
     <div id="avatarModalBackground" class="avatarModal__background">

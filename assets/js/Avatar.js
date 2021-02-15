@@ -1,28 +1,16 @@
 import { Avataaars } from './avataaars.js';
 import { colorProperties } from './avatarOptions.js';
+import { DEF, FEMALE_DEF, MALE_DEF } from './default.js';
 
-export class avatar {
-	properties = {	
-		background: undefined,
-		skin: 'tanned',
-		top: 'eyepatch',
-		hairColor: 'auburn',
-		hatColor: 'blue02',
-		accessories: undefined,
-		accessoriesColor: 'black',
-		facialHair: 'default',
-		facialHairColor: 'auburn',
-		clothing: 'shirtCrewNeck',
-		clothingGraphic: 'pizza',
-		clothingColor: 'black',
-		eyes: 'default',
-		eyebrows: 'defaultNatural',
-		mouth: 'default'
-	};
+export class Avatar {
 
-	constructor(properties) {
-		if (properties) {
-			this.properties = properties;
+	constructor(gender = 'male') {
+		if (gender == 'male') {
+			this.properties = MALE_DEF;
+		} else if (gender == 'female') {
+			this.properties = FEMALE_DEF;
+		} else {
+			this.properties = DEF;
 		}
 	}
 
