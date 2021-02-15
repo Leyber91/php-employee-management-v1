@@ -3,7 +3,7 @@ import { Avataaars } from '../../avataaars.js';
 import { Avatar } from '../../Avatar.js';
 import { DEF, FEMALE_DEF, MALE_DEF } from '../../default.js';
 import { EMPLOYEE_URL } from '../service/employee-service.js';
-import { createDeletionModal, createAddModal } from '../util/modals.js';
+import { createDeletionModal, createAddModal } from './modals.js';
 
 const columns = [
 	{
