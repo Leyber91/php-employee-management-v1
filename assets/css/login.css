@@ -86,4 +86,22 @@ body{
 .login >form >input[ type = email]:focus, .login >form >input[ type = email]:hover, .login >form >input[ type = password]:focus, .login >form >input[ type = password]:hover{
     outline:none;
     border: 1.5px solid var(--secondary);
+
+}
+
+.theme__input {
+    color:#feffff;
+    background-color: #2b7a78;
+    border-radius: 10px;
+    font-size: large;
+    font-family: 'Lato', sans-serif;
+    margin: 10px;
+    border:none;
+    border: 2px solid #0000;
+    text-transform: capitalize;
+}
+
+.theme__input:hover, .theme__input:focus {
+    border: 2px solid var(--light);
+    outline: none;
 }
