@@ -32,7 +32,7 @@ body{
     border-radius: 10px;
 }
 
-.login>img{
+.login>#image{
     margin: 0 auto;
     width:200px;
     height: 200px;
