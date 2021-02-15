@@ -28,7 +28,7 @@ function closeModalListeners(onClose) {
       target.classList.contains("avatarModal__background") ||
       target.classList.contains("avatarModal__close")
     ) {
-      onClose(avatar);
+      onClose(avatar.getProperties());
       removeAvaarModalListeners();
       closeAvatarModal();
     }

@@ -3,6 +3,7 @@
 define("EMPLOYEES_JSON_PATH", $_SERVER["DOCUMENT_ROOT"] . "/php-employee-management-v1/resources/employees.json");
 
 require_once('helper.php');
+require_once('avatarManager.php');
 
 function addEmployee(array $newEmployee)
 {
@@ -45,15 +46,24 @@ function updateEmployee(array $updateEmployee)
 function getEmployees(array $ids = [])
 {
     if (empty($ids)) {
-        return file_get_contents(EMPLOYEES_JSON_PATH);
+        $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
+        $allEmployees = array();
+        foreach($employees as $employee) {
+            $avatar = json_decode(getAvatar($employee['id']), true);
+            $employee['avatar'] = $avatar;
+            array_push($allEmployees, $employee);
+        }
+        return encodeJson(array_values($allEmployees));
     }
-
+ 
     $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
 
     $foundEmployees = array();
     foreach ($ids as $id) {
+        $avatar = json_decode(getAvatar($id), true);
         $found = findItemWithId($employees, $id);
         if ($found) {
+            $found->value['avatar'] = $avatar;
             array_push($foundEmployees, $found->value);
         }
     }
@@ -75,19 +85,3 @@ function getEmployeeAsArray(string $id)
     return findItemWithId($employees, $id)->value;
 }
 
-function removeAvatar($id)
-{
-    // TODO implement it
-}
-
-function getQueryStringParameters(): array
-{
-    // TODO implement it
-    return  array();
-}
-
-function getNextIdentifier(array $employeesCollection): int
-{
-    // TODO implement it
-    return 0;
-}

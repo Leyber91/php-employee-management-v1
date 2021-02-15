@@ -1,6 +1,6 @@
 <?php
-include('./library/employeeManager.php');
-include('./library/avatarManager.php');
+include_once('./library/employeeManager.php');
+include_once('./library/avatarManager.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@ include('./library/avatarManager.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/4f8800fac8.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="stylesheet" href="../assets/css/employee.css">
@@ -74,9 +75,20 @@ include('./library/avatarManager.php');
       width: 200
     });
     let callback = (avatarProps) => {
-      console.log(avatarProps)
+      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${employee.id}`, {properties: avatarProps})
+      .then((response) => {
+        updateAvatar(response.data.properties);
+      })
     }
     $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatarObj.properties, callback))
+
+    function updateAvatar(props) {
+      avatar.setProperties(props);
+      let $avatarContainer = document.querySelector('.employee__avatar');
+      $avatarContainer.innerHTML = avatar.getAvatar({
+        width: 200
+      });
+    }
   </script>
 
 </body>

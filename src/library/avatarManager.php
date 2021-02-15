@@ -40,6 +40,7 @@ function updateAvatar(array $updateAvatar)
     }
 
     saveArrayAsJson(AVATARS_JSON_PATH, array_sort($avatars, 'id'));
+    return $updateAvatar;
 }
 
 function getAvatars(array $ids = [])

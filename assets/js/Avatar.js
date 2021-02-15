@@ -12,18 +12,26 @@ export class Avatar {
 		} else {
 			this.properties = DEF;
 		}
-		Object.entries(properties).forEach(([key, value]) => this.properties[key] = value)
-		
+		this.setProperties(properties)
+	}
+
+	setProperties = (newProperties) => {
+		Object.entries(newProperties).forEach(([key, value]) => this.properties[key] = value)
 	}
 
 	getAvatar = (properties = {}) => {
 		let newProperties = {...this.properties}
 		Object.entries(properties).forEach(([key, value]) => newProperties[key] = value)
+
 		return Avataaars.create(newProperties);
 	}
 
 	getProperty = (optionName) => {
 		return this.properties[optionName];
+	}
+
+	getProperties = () => {
+		return this.properties;
 	}
 
 	changeProperty = (propertyName, value) => {
