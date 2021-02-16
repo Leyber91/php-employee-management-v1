@@ -116,12 +116,12 @@ export function createAddModal() {
 }
 
 export function createDeletionModal(event, employee) {
-	const right = window.innerWidth - event.clientX + 'px';
-	const top = event.clientY + 'px';
+  const right = window.innerWidth - event.clientX + "px";
+  const top = event.clientY + "px";
 
-	const delModal = document.createElement('div');
-	delModal.className = 'deletion-modal';
-	delModal.innerHTML = `
+  const delModal = document.createElement("div");
+  delModal.className = "deletion-modal";
+  delModal.innerHTML = `
     <button class="button__close material-icons">close</button>
     <div class="message"> Confirm deletion of <a class="employee">${employee.name}</a></div>
     <button class="modal__input button__delete">Yes</button>
@@ -131,13 +131,13 @@ export function createDeletionModal(event, employee) {
 		closeModal();
 	});
 
-	openModal({
-		node: delModal,
-		classes: ['deletion-modal-container'],
-		styles: {
-			position: 'fixed',
-			top: top,
-			right: right,
-		},
-	});
+  openModal({
+    node: delModal,
+    classes: ["deletion-modal-container"],
+    styles: {
+      position: "fixed",
+      top: top,
+      right: right,
+    },
+  });
 }

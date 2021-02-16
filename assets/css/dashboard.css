@@ -98,11 +98,17 @@ th.gridjs-th{
 .gridjs-head.unfolded .gridjs-search-input{
 	background-color: var(--smooth);
 }
+.gridjs-head:focus .gridjs-search-input, .gridjs-head:hover .gridjs-search-input{
+	background-color: var(--smooth);
+}
 
 .gridjs-search .gridjs-search-input.unfolded {
 	width: 250px;
 	margin-left: 43px;
 	cursor: text;
+	border: none;
+	outline: none;
+	box-shadow: none;
 }
 
 .gridjs-search .gridjs-search-input:focus ~ i {
