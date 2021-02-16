@@ -1,9 +1,9 @@
 import { Grid, html, h } from 'https://unpkg.com/gridjs/dist/gridjs.production.es.min.js';
 import { Avataaars } from '../library/avataaars.js';
-import { Avatar } from '../avatar/Avatar.js';
 import { EMPLOYEE_URL } from '../service/employee-service.js';
-import { createDeletionModal, createAddModal } from './modals.js';
-import { DEF, FEMALE_DEF, MALE_DEF } from '../../avatarOptions.js';
+import { createDeletionModal } from './deleteModal.js';
+import { createAddModal } from './addModal.js';
+import { DEF, FEMALE_DEF, MALE_DEF } from './avatarOptions.js';
 
 const columns = [
 	{

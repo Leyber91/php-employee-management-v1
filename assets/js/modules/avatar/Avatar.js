@@ -1,5 +1,5 @@
 import { Avataaars } from '../library/avataaars.js';
-import { COLOR_PROPERTIES, DEF, FEMALE_DEF, MALE_DEF } from '../../avatarOptions.js';
+import { COLOR_PROPERTIES, DEF, FEMALE_DEF, MALE_DEF } from '../components/avatarOptions.js';
 
 export class Avatar {
 

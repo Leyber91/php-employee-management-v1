@@ -41,7 +41,7 @@ function removeAppearingClass(event) {
 	}
 }
 
-export function closeModal(modalWrapper) {
+function closeModal(modalWrapper) {
 	if (modalWrapper) {
 		modalWrapper.classList.add('disappearing');
 		modalWrapper.addEventListener('animationend', () => modalWrapper.remove());

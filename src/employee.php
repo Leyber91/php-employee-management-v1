@@ -24,21 +24,21 @@ include('./library/sessionHelper.php');
 <body class='employee' id='employee'>
   <?php include('../assets/html/header.html'); ?>
   <?php
-  if(isset($_GET['id'])) {
+  if (isset($_GET['id'])) {
     $employee = getEmployeeAsArray($_GET['id']);
-    $avatar = getAvatar($employee['id']); 
+    $avatar = getAvatar($employee['id']);
   } else {
     die();
   }
-  if( !isset( $employee['linkedinLink'] ) ){
-    $employee['linkedinLink']=null;
+  if (!isset($employee['linkedinLink'])) {
+    $employee['linkedinLink'] = null;
   }
-  if( !isset( $employee['githubLink'] ) ){
-    $employee['githubLink']=null;
+  if (!isset($employee['githubLink'])) {
+    $employee['githubLink'] = null;
   }
 
   echo "<section class='employee__page'>
-    <button id='employeeEditButton' class='material-icons employee__edit__button' data-id='" . $employee['id'] ."'>edit</button>
+    <button id='employeeEditButton' class='material-icons employee__edit__button' data-id='" . $employee['id'] . "'>edit</button>
         <div class='employee__avatar'></div>
         <div class='employee__info'>
           <h2 class='employee__name'>" . $employee['name'] . " " . $employee['lastName'] . "</h2>
@@ -79,7 +79,9 @@ include('./library/sessionHelper.php');
     import {
       createAvatarModal
     } from "../assets/js/modules/components/avatarModal.js";
-    import { createEditModal } from "../assets/js/modules/components/modals.js";
+    import {
+      createEditModal
+    } from "../assets/js/modules/components/editModal.js";
 
     let $avatarContainer = document.querySelector('.employee__avatar');
     let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
@@ -89,26 +91,24 @@ include('./library/sessionHelper.php');
     };
     let avatar = new Avatar(employee.gender, avatarObj.properties);
 
-    const $editButon = document.getElementById( 'employeeEditButton' );
-
-    $editButon.addEventListener( 'click', function(event){
-        createEditModal(employee);
+    const $editButon = document.getElementById('employeeEditButton');
+    $editButon.addEventListener('click', function() {
+      createEditModal(employee);
     });
 
     $avatarContainer.innerHTML = avatar.getAvatar({
       width: 200
     });
-    let callback = (avatarProps) => {
-
+    let onAvatarModalClose = (avatarProps) => {
       axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${avatarObj.id}`, {
           properties: avatarProps,
           employeeId: employee.id
         })
         .then((response) => {
-          updateAvatar(response.data.properties);
+          repaintAvatar(response.data.properties);
         })
     }
-    $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatar.getProperties(), callback))
+    $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatar.getProperties(), onAvatarModalClose))
 
     function programateWink() {
       let $avatarContainer = document.querySelector('.employee__avatar');
@@ -131,7 +131,7 @@ include('./library/sessionHelper.php');
       return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    function updateAvatar(props) {
+    function repaintAvatar(props) {
       avatar.setProperties(props);
       let $avatarContainer = document.querySelector('.employee__avatar');
       $avatarContainer.innerHTML = avatar.getAvatar({
