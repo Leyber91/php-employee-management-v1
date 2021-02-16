@@ -2,57 +2,62 @@ import { printMainAvatar, printResults, printColors } from "./avatarModal.js";
 
 let avatar;
 
-export function avatarModalListeners(node, myAvatar) {
+export function addAvatarModalListeners(node, myAvatar, closeModal) {
   avatar = myAvatar;
-  generateRandomAvatarListener(node);
-  changeAvatarOptionListener(node);
-  changeAvatarPropertyListener(node);
-  changeAvatarColorsListener(node);
-  changeAvatarHairColorsListener(node);
+  addGenerateRandomAvatarListener(node);
+  addChangeAvatarOptionListener(node);
+  addChangeAvatarPropertyListener(node);
+  addChangeAvatarColorsListener(node);
+  addChangeAvatarHairColorsListener(node);
+  addCloseAvatarModalListener(node, closeModal);
 }
 
-function changeAvatarOptionListener(node) {
-  const avatarOptions = node.querySelector("#avatarOptions");
-  avatarOptions.addEventListener("change", function (event) {
-    const $modal = document.querySelector("#avatarModal");
-    printResults($modal, avatar, event.target.value);
-    printColors($modal, avatar, event.target.value);
-  });
+export function removeAvatarModalListeners(closeModal) {
+  const $node = document.querySelector('#avatarModal');
+  $node.querySelector("#avatarRandom__button").addEventListener("click", generateRandomAvatar)
+  $node.querySelector("#avatarOptions").removeEventListener("change", changeAvatarOption);
+  $node.querySelector("#avatarModalResults").addEventListener("click", changeMainAvatarProperty);
+  $node.querySelector("#avatarModalColors").addEventListener("click", changeMainAvatarProperty);
+  $node.querySelector("#avatarModalHairColors").addEventListener("click",changeMainAvatarProperty);
+  $node.querySelector("#avatarModalClose").addEventListener("click", closeModal);
 }
 
-function generateRandomAvatarListener(node) {
-  const avatarOptions = node.querySelector("#avatarOptions");
-  const randomButton = node.querySelector("#avatarRandom__button");
-  randomButton.addEventListener("click", () => {
-    const $modal = document.querySelector("#avatarModal");
-    avatar.randomize();
-    printMainAvatar($modal, avatar);
-    printResults($modal, avatar, avatarOptions.value);
-    printColors($modal, avatar, avatarOptions.value);
-  })
+function addGenerateRandomAvatarListener(node) {
+  node.querySelector("#avatarRandom__button").addEventListener("click", generateRandomAvatar)
 }
 
-function changeAvatarPropertyListener(node) {
-  const avatarModalResults = node.querySelector("#avatarModalResults");
-  avatarModalResults.addEventListener("click", changeMainAvatarPropertyByClick);
+function generateRandomAvatar() {
+  const $modal = document.querySelector("#avatarModal");
+  const avatarOptions = document.querySelector("#avatarOptions");
+  avatar.randomize();
+  printMainAvatar($modal, avatar);
+  printResults($modal, avatar, avatarOptions.value);
+  printColors($modal, avatar, avatarOptions.value);
 }
 
-function changeAvatarColorsListener(node) {
-  const avatarModalColors = node.querySelector("#avatarModalColors");
-  avatarModalColors.addEventListener("click", changeMainAvatarPropertyByClick);
+function addChangeAvatarOptionListener(node) {
+  node.querySelector("#avatarOptions").addEventListener("change", changeAvatarOption);
 }
 
-function changeAvatarHairColorsListener(node) {
-  const avatarModalHairColors = node.querySelector(
-    "#avatarModalHairColors"
-  );
-  avatarModalHairColors.addEventListener(
-    "click",
-    changeMainAvatarPropertyByClick
-  );
+function changeAvatarOption(event) {
+  const $modal = document.querySelector("#avatarModal");
+  printResults($modal, avatar, event.target.value);
+  printColors($modal, avatar, event.target.value);
 }
 
-function changeMainAvatarPropertyByClick(event) {
+function addChangeAvatarPropertyListener(node) {
+  node.querySelector("#avatarModalResults").addEventListener("click", changeMainAvatarProperty);
+}
+
+function addChangeAvatarColorsListener(node) {
+  node.querySelector("#avatarModalColors").addEventListener("click", changeMainAvatarProperty);
+}
+
+function addChangeAvatarHairColorsListener(node) {
+  node.querySelector("#avatarModalHairColors").addEventListener("click",changeMainAvatarProperty);
+}
+
+function changeMainAvatarProperty(event) {
   const target = event.target;
   const $modal = document.querySelector("#avatarModal");
   const avatarOptions = document.getElementById("avatarOptions");
@@ -67,4 +72,8 @@ function changeMainAvatarPropertyByClick(event) {
     printResults($modal, avatar, avatarOptions.value);
     printColors($modal, avatar, avatarOptions.value);
   }
+}
+
+function addCloseAvatarModalListener(node, closeModal) {
+  node.querySelector("#avatarModalClose").addEventListener("click", closeModal);
 }

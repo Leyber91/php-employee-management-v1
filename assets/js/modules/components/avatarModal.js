@@ -1,6 +1,6 @@
 import { Avataaars } from "../library/avataaars.js";
 import { Avatar } from "../avatar/Avatar.js";
-import { avatarModalListeners } from "./avatarModalListeners.js";
+import { addAvatarModalListeners, removeAvatarModalListeners } from "./avatarModalListeners.js";
 import { CUSTOM_COLOR, OPTIONS_WITH_BLANK, MENU_TEXT } from "./avatarOptions.js";
 import { openModal } from "../util/modal.js";
 
@@ -27,12 +27,15 @@ export function createAvatarModal(gender, properties, onClose = () => "") {
   printResults($modal, myAvatar, Object.keys(Avataaars.paths)[0]);
   printColors($modal, myAvatar, Object.keys(Avataaars.paths)[0]);
 
-  avatarModalListeners($modal, myAvatar, () => onClose(myAvatar.getProperties()));
-
-  openModal({
+  const closeModal = openModal({
       node: $modal,
-      onClose: () => onClose(myAvatar.getProperties())
+      onClose: function() {
+        onClose(myAvatar.getProperties());
+        removeAvatarModalListeners(closeModal);
+      }
   })
+
+  addAvatarModalListeners($modal, myAvatar, closeModal);
 }
 
 function printSelectOptions(node, modal) {

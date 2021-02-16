@@ -555,5 +555,65 @@
         },
         "employeeId": 29,
         "id": 328
+    },
+    {
+        "properties": {
+            "skin": "tanned",
+            "top": "straight01",
+            "hairColor": "platinum",
+            "hatColor": "heather",
+            "accessories": "prescription02",
+            "accessoriesColor": "blue01",
+            "facialHair": "beardMagestic",
+            "facialHairColor": "black",
+            "clothing": "graphicShirt",
+            "clothingGraphic": "bear",
+            "clothingColor": "black",
+            "eyes": "eyeRoll",
+            "eyebrows": "frownNatural",
+            "mouth": "tongue"
+        },
+        "employeeId": 30,
+        "id": 329
+    },
+    {
+        "properties": {
+            "skin": "tanned",
+            "top": "straight01",
+            "hairColor": "platinum",
+            "hatColor": "heather",
+            "accessories": "kurt",
+            "accessoriesColor": "blue01",
+            "facialHair": "beardMagestic",
+            "facialHairColor": "black",
+            "clothing": "graphicShirt",
+            "clothingGraphic": "bear",
+            "clothingColor": "black",
+            "eyes": "eyeRoll",
+            "eyebrows": "frownNatural",
+            "mouth": "tongue"
+        },
+        "employeeId": 31,
+        "id": 330
+    },
+    {
+        "properties": {
+            "skin": "tanned",
+            "top": "straight01",
+            "hairColor": "platinum",
+            "hatColor": "heather",
+            "accessories": "kurt",
+            "accessoriesColor": "blue01",
+            "facialHair": "beardMagestic",
+            "facialHairColor": "black",
+            "clothing": "graphicShirt",
+            "clothingGraphic": "bear",
+            "clothingColor": "black",
+            "eyes": "eyeRoll",
+            "eyebrows": "frownNatural",
+            "mouth": "tongue"
+        },
+        "employeeId": 32,
+        "id": 331
     }
 ]

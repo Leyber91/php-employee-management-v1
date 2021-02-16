@@ -24,6 +24,8 @@ export function openModal(modal) {
 		modal: newModalWrapper,
 		onClose: modal.onClose
 	});
+
+	return () => closeModal(newModalWrapper);
 }
 
 function closeModalOnClickOut(event) {
