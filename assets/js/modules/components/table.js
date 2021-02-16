@@ -149,8 +149,24 @@ function appendSearchIcon() {
 }
 
 function manageInputFocusEvents() {
+	const inputWrapper = document.querySelector('.gridjs-head');
 	const input = document.querySelector('.gridjs-search input');
-	input.addEventListener('focusin', () => input.classList.add('unfolded'));
+
+	inputWrapper.addEventListener('mouseenter', () =>  {
+		inputWrapper.classList.add('unfolded');
+
+	})
+	inputWrapper.addEventListener('mouseleave', () =>  {
+		if (!input.value) {
+			inputWrapper.classList.remove('unfolded');
+			input.classList.remove('unfolded');
+		}
+	})
+
+	input.addEventListener('focusin', () => {
+		input.classList.add('unfolded')
+		inputWrapper.classList.add('unfolded');
+	});
 	input.addEventListener('focusout', () => {
 		if (!input.value) {
 			input.classList.remove('unfolded');
