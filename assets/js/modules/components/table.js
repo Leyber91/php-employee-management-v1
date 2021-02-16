@@ -122,7 +122,7 @@ const grid = new Grid({
 	editing: true,
 	columns: columns,
 	server: server,
-	width: '80vw',
+	width: '95vw',
 });
 
 grid.render(document.getElementById('table-wrapper'));
