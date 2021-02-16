@@ -13,7 +13,7 @@ function addAvatar(array $newAvatar)
     saveArrayAsJson(AVATARS_JSON_PATH, $avatars);
 }
 
-function deleteAvatar(string $id)
+function deleteAvatar(int $id)
 {
     $avatars = decodeJsonFile(AVATARS_JSON_PATH);
     $avatar = findItemWithId($avatars, $id);
@@ -65,8 +65,9 @@ function getAvatars(array $ids = [])
 function getAvatar(int $id)
 {
     $avatars = decodeJsonFile(AVATARS_JSON_PATH);
-    $avatar = findItemWithId($avatars, $id)->value;
-    
+    $found = findItemWithId($avatars, $id);
+    $avatar = $found ? $found->value : array();
+
     return encodeJson($avatar);
 }
 

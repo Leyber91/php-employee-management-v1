@@ -26,8 +26,12 @@ include_once('./library/avatarManager.php');
 <body class='employee' id='employee'>
   <?php include('../assets/html/header.html'); ?>
   <?php
-  $employee = getEmployeeAsArray($_GET['id']);
-  $avatar = getAvatar($employee['id']);
+  if(isset($_GET['id'])) {
+    $employee = getEmployeeAsArray($_GET['id']);
+    $avatar = getAvatar($employee['id']); 
+  } else {
+    die();
+  }
 
   echo "<section class='employee__page'>
         <div class='employee__avatar'></div>
@@ -91,6 +95,7 @@ include_once('./library/avatarManager.php');
     $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatarObj.properties, callback))
 
     function programateWink() {
+      let $avatarContainer = document.querySelector('.employee__avatar');
       setTimeout(() => {
         $avatarContainer.innerHTML = avatar.getEyesClosedAvatar({
           width: 200
@@ -116,6 +121,7 @@ include_once('./library/avatarManager.php');
       $avatarContainer.innerHTML = avatar.getAvatar({
         width: 200
       });
+      $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatarObj.properties, callback))
     }
   </script>
 

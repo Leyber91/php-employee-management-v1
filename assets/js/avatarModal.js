@@ -23,6 +23,7 @@ export function createAvatarModal(gender, properties, onClose = () => "") {
 
   document.body.innerHTML += $modal;
 
+
   printSelectOptions();
   printMainAvatar(myAvatar);
   printResults(myAvatar, Object.keys(Avataaars.paths)[0]);

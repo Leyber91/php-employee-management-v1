@@ -14,7 +14,7 @@ function addEmployee(array $newEmployee)
     saveArrayAsJson(EMPLOYEES_JSON_PATH, $employees);
 }
 
-function deleteEmployee(string $id)
+function deleteEmployee(int $id)
 {
     $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
     $employee = findItemWithId($employees, $id);
@@ -71,17 +71,21 @@ function getEmployees(array $ids = [])
     return encodeJson(array_values($foundEmployees));
 }
 
-function getEmployee(string $id)
+function getEmployee(int $id)
 {
     $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    $employee = findItemWithId($employees, $id)->value;
+    $found = findItemWithId($employees, $id);
+    
+    $employee = $found ? $found->value : array();
 
     return encodeJson($employee);
 }
 
-function getEmployeeAsArray(string $id)
+function getEmployeeAsArray(int $id)
 {
     $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    return findItemWithId($employees, $id)->value;
+    $found = findItemWithId($employees, $id);
+    $employee = $found ? $found->value : array();
+    return $employee;
 }
 
