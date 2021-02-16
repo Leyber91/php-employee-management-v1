@@ -86,8 +86,9 @@ include('./library/sessionHelper.php')
       width: 200
     });
     let callback = (avatarProps) => {
-      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${employee.id}`, {
-          properties: avatarProps
+      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${avatarObj.id}`, {
+          properties: avatarProps,
+          employeeId: employee.id
         })
         .then((response) => {
           updateAvatar(response.data.properties);

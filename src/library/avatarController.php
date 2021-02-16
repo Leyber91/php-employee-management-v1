@@ -4,7 +4,7 @@ require('avatarManager.php');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET': {
-        $ids = !empty($_GET['ids']) ? explode(',', $_GET['ids']) : [];
+        $ids = !empty($_GET['employeeIds']) ? explode(',', $_GET['employeeIds']) : [];
         echo getAvatars($ids);
         break;
     }

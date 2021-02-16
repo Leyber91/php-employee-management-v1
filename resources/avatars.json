@@ -5,17 +5,17 @@
             "top": "theCaesar",
             "hairColor": "auburn",
             "hatColor": "gray02",
-            "accessories": "prescription01",
-            "accessoriesColor": "blue02",
+            "accessoriesColor": "black",
             "facialHair": "default",
             "facialHairColor": "auburn",
             "clothing": "shirtScoopNeck",
             "clothingGraphic": "pizza",
             "clothingColor": "gray01",
-            "eyes": "default",
+            "eyes": "squint",
             "eyebrows": "defaultNatural",
             "mouth": "twinkle"
         },
+        "employeeId": 1,
         "id": "1"
     },
     {
@@ -24,7 +24,6 @@
             "top": "shortFlat",
             "hairColor": "brownDark",
             "hatColor": "pastelOrange",
-            "accessories": "prescription01",
             "accessoriesColor": "pastelGreen",
             "facialHair": "beardLight",
             "facialHairColor": "brownDark",
@@ -35,6 +34,7 @@
             "eyebrows": "default",
             "mouth": "smile"
         },
+        "employeeId": 2,
         "id": "2"
     },
     {
@@ -53,25 +53,27 @@
             "eyebrows": "default",
             "mouth": "default"
         },
-        "id": "3"
+        "employeeId": 3,
+        "id": 3
     },
     {
         "properties": {
-            "skin": "brown",
-            "top": "winterHat02",
+            "skin": "yellow",
+            "top": "dreads",
             "hairColor": "black",
-            "hatColor": "blue02",
-            "accessories": "prescription02",
-            "accessoriesColor": "blue02",
+            "hatColor": "blue01",
+            "accessories": "round",
+            "accessoriesColor": "pastelOrange",
             "facialHair": "default",
-            "facialHairColor": "black",
-            "clothing": "blazerAndSweater",
-            "clothingGraphic": "resist",
-            "clothingColor": "pastelGreen",
-            "eyes": "eyeRoll",
+            "facialHairColor": "red",
+            "clothing": "overall",
+            "clothingGraphic": "dumbia",
+            "clothingColor": "red",
+            "eyes": "closed",
             "eyebrows": "raisedExcited",
-            "mouth": "eating"
+            "mouth": "screamOpen"
         },
+        "employeeId": 4,
         "id": "4"
     },
     {
@@ -90,7 +92,8 @@
             "eyebrows": "default",
             "mouth": "default"
         },
-        "id": "5"
+        "employeeId": 5,
+        "id": 5
     },
     {
         "properties": {
@@ -108,7 +111,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "6"
+        "employeeId": 6,
+        "id": 6
     },
     {
         "properties": {
@@ -126,7 +130,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "twinkle"
         },
-        "id": "7"
+        "employeeId": 7,
+        "id": 7
     },
     {
         "properties": {
@@ -145,7 +150,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "8"
+        "employeeId": 8,
+        "id": 8
     },
     {
         "properties": {
@@ -163,7 +169,8 @@
             "eyebrows": "default",
             "mouth": "smile"
         },
-        "id": "9"
+        "employeeId": 9,
+        "id": 9
     },
     {
         "properties": {
@@ -182,7 +189,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "10"
+        "employeeId": 10,
+        "id": 10
     },
     {
         "properties": {
@@ -200,7 +208,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "11"
+        "employeeId": 11,
+        "id": 11
     },
     {
         "properties": {
@@ -218,7 +227,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "twinkle"
         },
-        "id": "12"
+        "employeeId": 12,
+        "id": 12
     },
     {
         "properties": {
@@ -236,7 +246,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "13"
+        "employeeId": 13,
+        "id": 13
     },
     {
         "properties": {
@@ -255,7 +266,8 @@
             "eyebrows": "default",
             "mouth": "default"
         },
-        "id": "14"
+        "employeeId": 14,
+        "id": 14
     },
     {
         "properties": {
@@ -273,7 +285,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "twinkle"
         },
-        "id": "15"
+        "employeeId": 15,
+        "id": 15
     },
     {
         "properties": {
@@ -291,7 +304,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "16"
+        "employeeId": 16,
+        "id": 16
     },
     {
         "properties": {
@@ -309,12 +323,13 @@
             "eyebrows": "raisedExcitedNatural",
             "mouth": "smile"
         },
-        "id": "17"
+        "employeeId": 17,
+        "id": 17
     },
     {
         "properties": {
             "skin": "light",
-            "top": "fro",
+            "top": "curly",
             "hairColor": "black",
             "hatColor": "black",
             "accessoriesColor": "black",
@@ -327,6 +342,7 @@
             "eyebrows": "defaultNatural",
             "mouth": "smile"
         },
+        "employeeId": 18,
         "id": "18"
     },
     {
@@ -345,7 +361,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "19"
+        "employeeId": 19,
+        "id": 19
     },
     {
         "properties": {
@@ -363,7 +380,27 @@
             "eyebrows": "default",
             "mouth": "default"
         },
-        "id": "20"
+        "employeeId": 20,
+        "id": 20
+    },
+    {
+        "properties": {
+            "skin": "light",
+            "top": "shaggyMullet",
+            "hairColor": "brownDark",
+            "hatColor": "blue02",
+            "accessoriesColor": "black",
+            "facialHair": "default",
+            "facialHairColor": "auburn",
+            "clothing": "hoodie",
+            "clothingGraphic": "pizza",
+            "clothingColor": "black",
+            "eyes": "default",
+            "eyebrows": "raisedExcited",
+            "mouth": "twinkle"
+        },
+        "employeeId": 21,
+        "id": "21"
     },
     {
         "properties": {
@@ -381,7 +418,8 @@
             "eyebrows": "default",
             "mouth": "smile"
         },
-        "id": "22"
+        "employeeId": 22,
+        "id": 22
     },
     {
         "properties": {
@@ -399,7 +437,8 @@
             "eyebrows": "raisedExcited",
             "mouth": "smile"
         },
-        "id": "23"
+        "employeeId": 23,
+        "id": 23
     },
     {
         "properties": {
@@ -417,7 +456,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "24"
+        "employeeId": 24,
+        "id": 24
     },
     {
         "properties": {
@@ -435,7 +475,8 @@
             "eyebrows": "default",
             "mouth": "twinkle"
         },
-        "id": "25"
+        "employeeId": 25,
+        "id": 25
     },
     {
         "properties": {
@@ -453,7 +494,8 @@
             "eyebrows": "raisedExcitedNatural",
             "mouth": "default"
         },
-        "id": "26"
+        "employeeId": 26,
+        "id": 26
     },
     {
         "properties": {
@@ -472,7 +514,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "27"
+        "employeeId": 27,
+        "id": 27
     },
     {
         "properties": {
@@ -491,7 +534,8 @@
             "eyebrows": "defaultNatural",
             "mouth": "twinkle"
         },
-        "id": "28"
+        "employeeId": 28,
+        "id": 28
     },
     {
         "properties": {
@@ -509,9 +553,7 @@
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
-        "id": "29"
-    },
-    {
-        "id": 30
+        "employeeId": 29,
+        "id": 29
     }
 ]
