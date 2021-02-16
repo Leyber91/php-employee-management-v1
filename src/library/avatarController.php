@@ -17,7 +17,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'PUT': {
         $avatarData = json_decode(file_get_contents('php://input'), true);
         if(isset($_GET['id'])) {
-            $avatarData['id'] = $_GET['id'];
+            $avatarData['id'] = (int)$_GET['id'];
         } else {
             http_response_code(400);
             die();
