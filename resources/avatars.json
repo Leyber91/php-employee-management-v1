@@ -3,7 +3,7 @@
         "properties": {
             "skin": "pale",
             "top": "theCaesar",
-            "hairColor": "auburn",
+            "hairColor": "blonde",
             "hatColor": "gray02",
             "accessoriesColor": "black",
             "facialHair": "default",
@@ -11,11 +11,11 @@
             "clothing": "shirtScoopNeck",
             "clothingGraphic": "pizza",
             "clothingColor": "gray01",
-            "eyes": "squint",
+            "eyes": "default",
             "eyebrows": "defaultNatural",
             "mouth": "twinkle"
         },
-        "employeeId": 1,
+        "employeeId": "1",
         "id": 300
     },
     {

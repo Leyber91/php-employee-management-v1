@@ -1,48 +1,57 @@
-let modalWrapper = null;
+let modalWrappers = [];
 
 export function openModal(modal) {
-	closeModal();
-	modalWrapper = document.createElement('div');
-	modalWrapper.className = 'modal-wrapper appearing';
+	const newModalWrapper = document.createElement('div');
+	newModalWrapper.className = 'modal-wrapper appearing';
 
-	modalWrapper.addEventListener('click', closeModalOnClickOut);
-	modalWrapper.addEventListener('animationend', removeAppearingClass);
-
-	let modalContainer = document.createElement('div');
-	modalContainer.className = 'modal-container';
+	newModalWrapper.addEventListener('click', closeModalOnClickOut);
+	newModalWrapper.addEventListener('animationend', removeAppearingClass);
 
 	if (modal.classes) {
 		modal.classes.forEach((className) => {
-			modalContainer.classList.add(className);
+			newModalWrapper.classList.add(className);
 		});
 	}
 	if (modal.styles) {
 		Object.entries(modal.styles).forEach(([key, value]) => {
-			modalContainer.style[key] = value;
+			newModalWrapper.style[key] = value;
 		});
 	}
 
-	modalContainer.appendChild(modal.node);
-	modalWrapper.appendChild(modalContainer);
-	document.body.appendChild(modalWrapper);
+	newModalWrapper.appendChild(modal.node);
+	document.body.appendChild(newModalWrapper);
+	modalWrappers.push({
+		modal: newModalWrapper,
+		onClose: modal.onClose
+	});
 }
 
 function closeModalOnClickOut(event) {
-	if (event.target === modalWrapper) {
-		closeModal();
+	if (modalWrappers.map(getModal).includes(event.target)) {
+		closeModal(event.target);
 	}
 }
 
 function removeAppearingClass(event) {
-	if (event.target === modalWrapper) {
-		modalWrapper.classList.remove('appearing');
-		modalWrapper.removeEventListener('animationend', removeAppearingClass);
+	if (modalWrappers.map(getModal).includes(event.target)) {
+		event.target.classList.remove('appearing');
+		event.target.removeEventListener('animationend', removeAppearingClass);
 	}
 }
 
-export function closeModal() {
+export function closeModal(modalWrapper) {
 	if (modalWrapper) {
 		modalWrapper.classList.add('disappearing');
 		modalWrapper.addEventListener('animationend', () => modalWrapper.remove());
+		const index = modalWrappers.map(getModal).indexOf(modalWrapper);
+		const modalWrapperToClose = modalWrappers[index];
+		if(modalWrapperToClose.onClose) {
+			modalWrapperToClose.onClose()
+		}
+		modalWrappers.splice(index, 1);
 	}
+}
+
+function getModal(modalWrapper) {
+	return modalWrapper.modal;
 }

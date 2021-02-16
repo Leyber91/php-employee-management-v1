@@ -35,7 +35,7 @@ $avatars = getAvatars();
     <script type="module">
         import {
             Avatar
-        } from "./assets/js/Avatar.js";
+        } from "./assets/js/modules/avatar/Avatar.js";
 
         let mainAvatarImage = '';
         let eyesClosedImage = '';

@@ -1,4 +1,4 @@
-export const customColor = {
+export const CUSTOM_COLOR = {
 	accessories: {
 		initial: '#f00',
 		name: 'accessoriesColor',
@@ -25,7 +25,7 @@ export const customColor = {
 	},
 };
 
-export const menuText = {
+export const MENU_TEXT = {
 	skin: 'Skin',
 	top: 'Hair & Hats',
 	accessories: 'Glasses',
@@ -37,8 +37,7 @@ export const menuText = {
 	facialHair: 'Facial hair'
 }
 
-
-export const colorProperties = {
+export const COLOR_PROPERTIES = {
   skin: 'skin',
   hairColor: 'hair',
   hatColor: 'palette',
@@ -47,7 +46,7 @@ export const colorProperties = {
   clothingColor: 'palette',
 }
 
-export const optionsWithBlank = {
+export const OPTIONS_WITH_BLANK = {
 	accessories: true,
 	clothing: false,
 	clothingGraphic: false,
@@ -58,4 +57,59 @@ export const optionsWithBlank = {
 	nose: false,
 	skin: false,
 	top: false,
+};
+
+
+export const MALE_DEF = {	
+	background: undefined,
+	skin: 'tanned',
+	top: 'eyepatch',
+	hairColor: 'auburn',
+	hatColor: 'blue02',
+	accessories: undefined,
+	accessoriesColor: 'black',
+	facialHair: 'default',
+	facialHairColor: 'auburn',
+	clothing: 'shirtCrewNeck',
+	clothingGraphic: 'pizza',
+	clothingColor: 'black',
+	eyes: 'default',
+	eyebrows: 'defaultNatural',
+	mouth: 'default'
+};
+
+export const FEMALE_DEF = {	
+	background: undefined,
+	skin: 'tanned',
+	top: 'longButNotTooLong',
+	hairColor: 'auburn',
+	hatColor: 'blue02',
+	accessories: undefined,
+	accessoriesColor: 'black',
+	facialHair: 'default',
+	facialHairColor: 'auburn',
+	clothing: 'shirtCrewNeck',
+	clothingGraphic: 'pizza',
+	clothingColor: 'black',
+	eyes: 'default',
+	eyebrows: 'defaultNatural',
+	mouth: 'default'
+};
+
+export const DEF = {	
+	background: undefined,
+	skin: 'tanned',
+	top: 'frida',
+	hairColor: 'auburn',
+	hatColor: 'blue02',
+	accessories: undefined,
+	accessoriesColor: 'black',
+	facialHair: 'default',
+	facialHairColor: 'auburn',
+	clothing: 'shirtCrewNeck',
+	clothingGraphic: 'pizza',
+	clothingColor: 'black',
+	eyes: 'default',
+	eyebrows: 'defaultNatural',
+	mouth: 'default'
 };

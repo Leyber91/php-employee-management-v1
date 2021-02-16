@@ -1,15 +1,16 @@
-import { Avataaars } from "./modules/library/avataaars.js";
-import { Avatar } from "./modules/avatar/Avatar.js";
+import { Avataaars } from "../library/avataaars.js";
+import { Avatar } from "../avatar/Avatar.js";
 import { avatarModalListeners } from "./avatarModalListeners.js";
 import { CUSTOM_COLOR, OPTIONS_WITH_BLANK, MENU_TEXT } from "./avatarOptions.js";
+import { openModal } from "../util/modal.js";
 
 export function createAvatarModal(gender, properties, onClose = () => "") {
   const myAvatar = new Avatar(gender, properties);
 
   const $modal = document.createElement('div');
-  $modal.className = 'avatarModal__background';
-  $modal.id = 'avatarModalBackground';
-  $modal.innerHTML = `<div id="avatarModal" class="avatarModal">
+  $modal.className = 'avatarModal';
+  $modal.id = 'avatarModal';
+  $modal.innerHTML = `
         <button id="avatarModalClose" class="avatarModal__close material-icons">cancel</button>
         <div id="avatarModalImage" class="avatarModal__image"></div>
         <select name="avatarOptions" id="avatarOptions"> </select>
@@ -19,20 +20,23 @@ export function createAvatarModal(gender, properties, onClose = () => "") {
         <div id="avatarModalColors" class="avatarModal__colors"></div>
         <span class="avatarModal__hairColorTag">Hair color</span>
         <div id="avatarModalHairColors" class="avatarModal__hairColors"></div>
-      </div>`;
+      `;
 
-  document.body.appendChild($modal);
+  printSelectOptions($modal);
+  printMainAvatar($modal, myAvatar);
+  printResults($modal, myAvatar, Object.keys(Avataaars.paths)[0]);
+  printColors($modal, myAvatar, Object.keys(Avataaars.paths)[0]);
 
-  printSelectOptions();
-  printMainAvatar(myAvatar);
-  printResults(myAvatar, Object.keys(Avataaars.paths)[0]);
-  printColors(myAvatar, Object.keys(Avataaars.paths)[0]);
+  avatarModalListeners($modal, myAvatar, () => onClose(myAvatar.getProperties()));
 
-  avatarModalListeners(myAvatar, onClose);
+  openModal({
+      node: $modal,
+      onClose: () => onClose(myAvatar.getProperties())
+  })
 }
 
-function printSelectOptions() {
-  const $select = document.getElementById("avatarOptions");
+function printSelectOptions(node, modal) {
+  const $select = node.querySelector("#avatarOptions");
   Object.keys(Avataaars.paths).forEach((option) => {
     if(option == 'nose') {
       return;
@@ -41,8 +45,8 @@ function printSelectOptions() {
   });
 }
 
-export function printResults(myAvatar, optionName) {
-  const avatarResults = document.getElementById("avatarModalResults");
+export function printResults(node, myAvatar, optionName) {
+  const avatarResults = node.querySelector("#avatarModalResults");
   let resultsHtml = "";
 
   if (OPTIONS_WITH_BLANK[optionName]) {
@@ -71,11 +75,11 @@ export function printResults(myAvatar, optionName) {
   }
 }
 
-export function printColors(myAvatar, optionName) {
-  const colorResults = document.getElementById("avatarModalColors");
-  const hairColorsResults = document.getElementById("avatarModalHairColors");
-  const colorTag = document.querySelector('.avatarModal__colorTag');
-  const hairColorTag = document.querySelector('.avatarModal__hairColorTag');
+export function printColors(node, myAvatar, optionName) {
+  const colorResults = node.querySelector("#avatarModalColors");
+  const hairColorsResults = node.querySelector("#avatarModalHairColors");
+  const colorTag = node.querySelector('.avatarModal__colorTag');
+  const hairColorTag = node.querySelector('.avatarModal__hairColorTag');
 
   if (CUSTOM_COLOR[optionName] != undefined && optionName != "facialHair" && optionName != "skin") {
     const propertyName = CUSTOM_COLOR[optionName].name;
@@ -125,15 +129,15 @@ export function printColors(myAvatar, optionName) {
   }
 }
 
-export function printMainAvatar(myAvatar) {
+export function printMainAvatar(node, myAvatar) {
   if(myAvatar.getProperty('clothing') != 'graphicShirt') {
-    document.querySelector('#avatarOptions option[value="clothingGraphic"]').setAttribute('hidden', true);
+    node.querySelector('#avatarOptions option[value="clothingGraphic"]').setAttribute('hidden', true);
   } else {
-    document.querySelector('#avatarOptions option[value="clothingGraphic"]').removeAttribute('hidden');
+    node.querySelector('#avatarOptions option[value="clothingGraphic"]').removeAttribute('hidden');
   }
 
   const mainAvatar = myAvatar.getAvatar({
     width: 300
   });
-  document.getElementById("avatarModalImage").innerHTML = mainAvatar
+  node.querySelector("#avatarModalImage").innerHTML = mainAvatar
 }

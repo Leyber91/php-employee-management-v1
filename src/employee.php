@@ -18,10 +18,6 @@ include('./library/sessionHelper.php');
   <link rel="stylesheet" href="../assets/css/employee.css">
   <link rel="stylesheet" href="../assets/css/modal.css">
 
-  <script type="module" src="/php-employee-management-v1/assets/js/Avatar.js"></script>
-
-  <script src="../assets/js/employee.js" type="module"></script>
-
   <title>Employee</title>
 </head>
 
@@ -79,10 +75,11 @@ include('./library/sessionHelper.php');
   <script type="module">
     import {
       Avatar
-    } from '../assets/js/Avatar.js'
+    } from '../assets/js/modules/avatar/Avatar.js'
     import {
       createAvatarModal
-    } from "../assets/js/avatarModal.js";
+    } from "../assets/js/modules/components/avatarModal.js";
+    import { createEditModal } from "../assets/js/modules/components/modals.js";
 
     let $avatarContainer = document.querySelector('.employee__avatar');
     let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
@@ -92,10 +89,17 @@ include('./library/sessionHelper.php');
     };
     let avatar = new Avatar(employee.gender, avatarObj.properties);
 
+    const $editButon = document.getElementById( 'employeeEditButton' );
+
+    $editButon.addEventListener( 'click', function(event){
+        createEditModal(employee);
+    });
+
     $avatarContainer.innerHTML = avatar.getAvatar({
       width: 200
     });
     let callback = (avatarProps) => {
+
       axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${avatarObj.id}`, {
           properties: avatarProps,
           employeeId: employee.id
