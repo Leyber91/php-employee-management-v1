@@ -26,6 +26,13 @@ export class Avatar {
 		return Avataaars.create(newProperties);
 	}
 
+	getEyesClosedAvatar = (properties = {}) => {
+		let newProperties = {...this.properties}
+		Object.entries(properties).forEach(([key, value]) => newProperties[key] = value)
+		newProperties.eyes = 'happy';
+		return Avataaars.create(newProperties);
+	}
+
 	getProperty = (optionName) => {
 		return this.properties[optionName];
 	}

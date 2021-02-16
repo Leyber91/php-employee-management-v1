@@ -35,23 +35,23 @@ include_once('./library/avatarManager.php');
         <h5 class='employee__role'>" . $employee['role'] . "</h5>
         <div class='employee__contact'>
           <div class='employee__email'>
-            <a href='mailto:".$employee['email']."'>          
+            <a href='mailto:" . $employee['email'] . "'>          
               <span class='material-icons contact__icon'>email</span>
             </a>
           </div>
           <div class='employee__phone'>
-            <a href='callto:".$employee['phoneNumber']."'>          
+            <a href='callto:" . $employee['phoneNumber'] . "'>          
               <span class='material-icons contact__icon'>stay_primary_portrait</span>
             </a>
 
           </div>
           <div class='awesome employee__linkedin'>
-            <a href='".$employee['linkedinLink']."'>      
+            <a href='" . $employee['linkedinLink'] . "'>      
               <i class='fab fa-linkedin contact__icon'></i>    
             </a>
           </div>
           <div class='awesome employee__github'>
-            <a href='".$employee['githubLink']."'>   
+            <a href='" . $employee['githubLink'] . "'>   
               <i class='fab fa-github contact__icon'></i>       
             </a>
           </div>
@@ -62,25 +62,53 @@ include_once('./library/avatarManager.php');
   <?php include('../assets/html/footer.html'); ?>
 
   <script type="module">
-    import { Avatar } from '../assets/js/Avatar.js'
-    import { createAvatarModal } from "../assets/js/avatarModal.js";
+    import {
+      Avatar
+    } from '../assets/js/Avatar.js'
+    import {
+      createAvatarModal
+    } from "../assets/js/avatarModal.js";
 
     let $avatarContainer = document.querySelector('.employee__avatar');
     let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
     let avatarObj = JSON.parse(<?php echo json_encode($avatar); ?>);
-    avatarObj = avatarObj ? avatarObj : {properties: {}};
+    avatarObj = avatarObj ? avatarObj : {
+      properties: {}
+    };
     let avatar = new Avatar(employee.gender, avatarObj.properties);
-    
+
     $avatarContainer.innerHTML = avatar.getAvatar({
       width: 200
     });
     let callback = (avatarProps) => {
-      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${employee.id}`, {properties: avatarProps})
-      .then((response) => {
-        updateAvatar(response.data.properties);
-      })
+      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${employee.id}`, {
+          properties: avatarProps
+        })
+        .then((response) => {
+          updateAvatar(response.data.properties);
+        })
     }
     $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatarObj.properties, callback))
+
+    function programateWink() {
+      setTimeout(() => {
+        $avatarContainer.innerHTML = avatar.getEyesClosedAvatar({
+          width: 200
+        });
+        setTimeout(() => {
+          $avatarContainer.innerHTML = avatar.getAvatar({
+            width: 200
+          });
+        }, getRandomInt(120, 160))
+        programateWink();
+      }, getRandomInt(2000, 10000))
+    }
+
+    programateWink()
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
 
     function updateAvatar(props) {
       avatar.setProperties(props);

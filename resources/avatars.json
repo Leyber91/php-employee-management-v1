@@ -3,7 +3,7 @@
         "properties": {
             "skin": "pale",
             "top": "theCaesar",
-            "hairColor": "blonde",
+            "hairColor": "auburn",
             "hatColor": "gray02",
             "accessoriesColor": "black",
             "facialHair": "default",
@@ -23,7 +23,8 @@
             "top": "shortFlat",
             "hairColor": "brownDark",
             "hatColor": "pastelOrange",
-            "accessoriesColor": "pastelBlue",
+            "accessories": "wayfarers",
+            "accessoriesColor": "pastelGreen",
             "facialHair": "beardLight",
             "facialHairColor": "brownDark",
             "clothing": "shirtCrewNeck",
@@ -55,19 +56,20 @@
     },
     {
         "properties": {
-            "skin": "tanned",
-            "top": "eyepatch",
-            "hairColor": "auburn",
-            "hatColor": "blue02",
-            "accessoriesColor": "black",
-            "facialHair": "default",
-            "facialHairColor": "auburn",
+            "skin": "pale",
+            "top": "fro",
+            "hairColor": "brownDark",
+            "hatColor": "pastelBlue",
+            "accessories": "prescription01",
+            "accessoriesColor": "gray01",
+            "facialHair": "beardLight",
+            "facialHairColor": "brown",
             "clothing": "shirtCrewNeck",
-            "clothingGraphic": "pizza",
-            "clothingColor": "black",
-            "eyes": "default",
-            "eyebrows": "defaultNatural",
-            "mouth": "default"
+            "clothingGraphic": "resist",
+            "clothingColor": "heather",
+            "eyes": "squint",
+            "eyebrows": "default",
+            "mouth": "serious"
         },
         "id": "4"
     },
@@ -202,7 +204,7 @@
     {
         "properties": {
             "skin": "darkBrown",
-            "top": "dreads02",
+            "top": "shortCurly",
             "hairColor": "black",
             "hatColor": "black",
             "accessoriesColor": "black",
@@ -298,11 +300,11 @@
             "hatColor": "pastelGreen",
             "accessoriesColor": "black",
             "facialHair": "moustaceFancy",
-            "facialHairColor": "black",
+            "facialHairColor": "brownDark",
             "clothing": "graphicShirt",
             "clothingGraphic": "skrull",
             "clothingColor": "black",
-            "eyes": "default",
+            "eyes": "squint",
             "eyebrows": "raisedExcitedNatural",
             "mouth": "smile"
         },
@@ -311,7 +313,7 @@
     {
         "properties": {
             "skin": "light",
-            "top": "dreads02",
+            "top": "fro",
             "hairColor": "black",
             "hatColor": "black",
             "accessoriesColor": "black",
@@ -382,7 +384,7 @@
     },
     {
         "properties": {
-            "skin": "tanned",
+            "skin": "light",
             "top": "eyepatch",
             "hairColor": "black",
             "hatColor": "blue02",
@@ -454,17 +456,18 @@
     },
     {
         "properties": {
-            "skin": "tanned",
+            "skin": "light",
             "top": "theCaesar",
             "hairColor": "black",
             "hatColor": "blue02",
+            "accessories": "prescription01",
             "accessoriesColor": "black",
             "facialHair": "default",
             "facialHairColor": "auburn",
             "clothing": "hoodie",
             "clothingGraphic": "pizza",
             "clothingColor": "red",
-            "eyes": "default",
+            "eyes": "squint",
             "eyebrows": "defaultNatural",
             "mouth": "default"
         },
@@ -476,6 +479,7 @@
             "top": "bigHair",
             "hairColor": "black",
             "hatColor": "blue02",
+            "accessories": "prescription02",
             "accessoriesColor": "black",
             "facialHair": "beardMedium",
             "facialHairColor": "brown",
