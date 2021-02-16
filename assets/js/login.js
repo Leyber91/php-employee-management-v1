@@ -9,7 +9,7 @@ window.onload = () => {
     mainAvatarImage = myAvatar.getAvatar({eyes: 'squint', mouth: 'smile'});
     eyesClosedImage = myAvatar.getAvatar({eyes: 'closed', mouth: 'serious'});
     document.getElementById( 'image' ). innerHTML = mainAvatarImage;
-  };
+};
   
 
 
