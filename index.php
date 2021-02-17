@@ -27,7 +27,7 @@ $avatars = getAvatars();
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" autocomplete="on">
             <input type="submit" value="Submit">
         </form>
     </section>
@@ -35,7 +35,7 @@ $avatars = getAvatars();
     <script type="module">
         import {
             Avatar
-        } from "./assets/js/Avatar.js";
+        } from "./assets/js/modules/avatar/Avatar.js";
 
         let mainAvatarImage = '';
         let eyesClosedImage = '';

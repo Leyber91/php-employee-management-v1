@@ -1,9 +1,9 @@
 import { Grid, html, h } from 'https://unpkg.com/gridjs/dist/gridjs.production.es.min.js';
-import { Avataaars } from '../../avataaars.js';
-import { Avatar } from '../../Avatar.js';
-import { DEF, FEMALE_DEF, MALE_DEF } from '../../default.js';
+import { Avataaars } from '../library/avataaars.js';
 import { EMPLOYEE_URL } from '../service/employee-service.js';
-import { createDeletionModal, createAddModal } from './modals.js';
+import { createDeletionModal } from './deleteModal.js';
+import { createAddModal } from './addModal.js';
+import { DEF, FEMALE_DEF, MALE_DEF } from './avatarOptions.js';
 
 const columns = [
 	{
@@ -125,18 +125,25 @@ const grid = new Grid({
 	width: '95vw',
 });
 
-grid.render(document.getElementById('table-wrapper'));
+export function initTable() {
+	grid.render(document.getElementById('table-wrapper'));
 
-grid.on('rowClick', (...args) => {
-	if (!args[0].target.classList.contains('material-icons')) {
-		window.location.href = `../src/employee.php?id=${args[1].cells[0].data}`;
-	}
-});
+	grid.on('rowClick', (...args) => {
+		if (!args[0].target.classList.contains('material-icons')) {
+			window.location.href = `../src/employee.php?id=${args[1].cells[0].data}`;
+		}
+	});
 
-window.addEventListener('load', () => {
+	appendSearchIcon();
+}
+
+export function updateTable() {
+	grid.updateConfig({
+		server: server,
+	}).forceRender();
 	appendSearchIcon();
 	manageInputFocusEvents();
-});
+}
 
 function appendSearchIcon() {
 	const gridJsSearch = document.querySelector('.gridjs-search');
@@ -149,13 +156,11 @@ function appendSearchIcon() {
 		input.classList.add('unfolded')
 		inputWrapper.classList.add('unfolded');
 	});
+	setSearchInputEvents(inputWrapper, input)
 	gridJsSearch.appendChild(searchIcon);
 }
 
-function manageInputFocusEvents() {
-	const inputWrapper = document.querySelector('.gridjs-head');
-	const input = document.querySelector('.gridjs-search input');
-
+function setSearchInputEvents(inputWrapper, input) {
 	inputWrapper.addEventListener('mouseenter', () =>  {
 		inputWrapper.classList.add('unfolded');
 	})
@@ -177,12 +182,4 @@ function manageInputFocusEvents() {
 			inputWrapper.classList.remove('unfolded');
 		}
 	});
-}
-
-export function update() {
-	grid.updateConfig({
-		server: server,
-	}).forceRender();
-	appendSearchIcon();
-	manageInputFocusEvents();
 }

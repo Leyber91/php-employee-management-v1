@@ -1,17 +1,16 @@
-import { Avatar } from '../../Avatar.js';
-import { addEmployee, deleteEmployee } from '../service/employee-service.js';
+import { addEmployee } from '../service/employee-service.js';
 import { addAvatar } from '../service/avatar-service.js';
-import { closeModal, openModal } from '../util/modal.js';
-import { createAvatarModal } from '../../avatarModal.js';
-import { update } from './table.js';
+import { openModal } from '../util/modal.js';
+import { createAvatarModal } from './avatarModal.js';
+import { updateTable } from './table.js';
+import { Avatar } from '../avatar/Avatar.js';
 
 export function createAddModal() {
 	const addModal = document.createElement('div');
-	addModal.className = 'add-modal';
-	const myAvatar = new Avatar('other');
+	addModal.className = 'add-modal centered-modal';
+	const avatar = new Avatar('other');
 	addModal.innerHTML = `
-    <h3 class="modal-title">Add new employee</h3>
-    <div class="modal-image" id="modal-image">${myAvatar.getAvatar({ width: 300 })}</div>
+    <div class="modal-image" id="modal-image">${avatar.getAvatar({ width: 300 })}</div>
     <form action="http://localhost/php-employee-management-v1/src/library/employeeController.php" method="POST">
         <div class="fields">
             <div class="labeled-input">
@@ -27,7 +26,7 @@ export function createAddModal() {
                 <input min=10 max=100 type="number" name="age" class="modal__input">
             </div>
             <div class="labeled-input">
-                <label for="age">Gender</label>
+                <label for="gender">Gender</label>
                 <select required type="select" name="gender" class="modal__input">
                     <option value="male">Male</option>                   
                     <option value="female">Female</option>
@@ -75,69 +74,37 @@ export function createAddModal() {
             </div>
         </div>
         <label for="submit" hidden>Submit</label>
-        <input type="submit" name="submit" class="modal__input">
+        <input value="Create" type="submit" name="submit" class="modal__input">
     </form>
     `;
-	addModal.querySelector('form').addEventListener('submit', (event) => {
-		console.log(myAvatar.getProperties());
-		event.preventDefault();
-		const formData = new FormData(event.target);
-		addEmployee(formData, (response) => {
-			addAvatar(response.data.id, myAvatar.getProperties(), () => {
-				closeModal();
-				update();
-			});
-		});
+
+    const closeModal = openModal({
+		node: addModal
 	});
 
-	let callback = (avatarProps) => {
-		myAvatar.setProperties(avatarProps);
+	const onAvatarModalClose = (avatarProps) => {
+		avatar.setProperties(avatarProps);
 		repaintAvatar();
 	};
 
 	addModal
 		.querySelector('#modal-image')
-		.addEventListener('click', () => createAvatarModal('other', myAvatar.getProperties(), callback));
+        .addEventListener('click', () => createAvatarModal('other', avatar.getProperties(), onAvatarModalClose));
+        
+    addModal.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        addEmployee(formData, (response) => {
+            addAvatar(response.data.id, avatar.getProperties(), () => {
+                closeModal();
+                updateTable();
+            });
+        });
+    });
 
 	function repaintAvatar() {
-		document.querySelector('#modal-image').innerHTML = myAvatar.getAvatar({ width: 300 });
+		document.querySelector('#modal-image').innerHTML = avatar.getAvatar({ width: 300 });
 	}
 
-	openModal({
-		node: addModal,
-		classes: ['add-modal-container'],
-		styles: {
-			position: 'fixed',
-			top: '50%',
-			left: '50%',
-			transform: 'translate(-50%,-50%)',
-		},
-	});
-}
 
-export function createDeletionModal(event, employee) {
-  const right = window.innerWidth - event.clientX + "px";
-  const top = event.clientY + "px";
-
-  const delModal = document.createElement("div");
-  delModal.className = "deletion-modal";
-  delModal.innerHTML = `
-    <button class="button__close material-icons">close</button>
-    <div class="message"> Confirm deletion of <a class="employee">${employee.name}</a></div>
-    <button class="modal__input button__delete">Yes</button>
-    `;
-	delModal.querySelector('.button__delete').addEventListener('click', () => {
-		deleteEmployee(employee.id, update);
-		closeModal();
-	});
-
-  openModal({
-    node: delModal,
-    classes: ["deletion-modal-container"],
-    styles: {
-      position: "fixed",
-      top: top,
-      right: right,
-    },
-  });
 }

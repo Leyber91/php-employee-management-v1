@@ -18,34 +18,30 @@ include('./library/sessionHelper.php');
   <link rel="stylesheet" href="../assets/css/employee.css">
   <link rel="stylesheet" href="../assets/css/modal.css">
 
-  <script type="module" src="/php-employee-management-v1/assets/js/Avatar.js"></script>
-
-  <script src="../assets/js/employee.js" type="module"></script>
-
   <title>Employee</title>
 </head>
 
 <body class='employee' id='employee'>
   <?php include('../assets/html/header.html'); ?>
   <?php
-  if(isset($_GET['id'])) {
+  if (isset($_GET['id'])) {
     $employee = getEmployeeAsArray($_GET['id']);
-    $avatar = getAvatar($employee['id']); 
+    $avatar = getAvatar($employee['id']);
   } else {
     die();
   }
-  if( !isset( $employee['linkedinLink'] ) ){
-    $employee['linkedinLink']=null;
+  if (!isset($employee['linkedinLink'])) {
+    $employee['linkedinLink'] = null;
   }
-  if( !isset( $employee['githubLink'] ) ){
-    $employee['githubLink']=null;
+  if (!isset($employee['githubLink'])) {
+    $employee['githubLink'] = null;
   }
   if( !isset( $employee['age'] ) ){
     $employee['age']=' - ';
   }
 
   echo "<section class='employee__page'>
-    <button id='employeeEditButton' class='material-icons employee__edit__button' data-id='" . $employee['id'] ."'>edit</button>
+    <button id='employeeEditButton' class='material-icons employee__edit__button' data-id='" . $employee['id'] . "'>edit</button>
         <div class='employee__avatar'></div>
         <div class='employee__info'>
           <h2 class='employee__name'>" . $employee['name'] . " " . $employee['lastName'] . "</h2>
@@ -62,18 +58,24 @@ include('./library/sessionHelper.php');
               <a href='callto:" . $employee['phoneNumber'] . "'>          
                 <span class='material-icons contact__icon'>stay_primary_portrait</span>
               </a>
-            </div>
-            <div class='awesome employee__linkedin'>
-              <a href='" . $employee['linkedinLink'] . "'>      
-                <span class='fab fa-linkedin contact__icon'></span>    
+            </div>".
+            (isset($employee['linkedinLink']) ?
+            "<div class='awesome employee__linkedin'>
+              <a href='" . "https://" . $employee['linkedinLink'] . "'>   
+                <span class='fab fa-linkedin contact__icon'></span>       
               </a>
-            </div>
-            <div class='awesome employee__github'>
-              <a href='" . $employee['githubLink'] . "'>   
+            </div>" : 
+            '')
+            .""
+            .
+            (isset($employee['githubLink']) ?
+            "<div class='awesome employee__github'>
+              <a href='" . "https://" . $employee['githubLink'] . "'>   
                 <span class='fab fa-github contact__icon'></span>       
               </a>
-            </div>
-          </div>
+            </div>" : 
+            '')
+            ."
         </div>
         </section>"
 
@@ -83,10 +85,16 @@ include('./library/sessionHelper.php');
   <script type="module">
     import {
       Avatar
-    } from '../assets/js/Avatar.js'
+    } from '../assets/js/modules/avatar/Avatar.js'
     import {
       createAvatarModal
-    } from "../assets/js/avatarModal.js";
+    } from "../assets/js/modules/components/avatarModal.js";
+    import {
+      createEditModal
+    } from "../assets/js/modules/components/editModal.js";
+    import {
+      updateAvatar
+    } from "../assets/js/modules/service/avatar-service.js";
 
     let $avatarContainer = document.querySelector('.employee__avatar');
     let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
@@ -96,19 +104,19 @@ include('./library/sessionHelper.php');
     };
     let avatar = new Avatar(employee.gender, avatarObj.properties);
 
+    const $editButon = document.getElementById('employeeEditButton');
+    $editButon.addEventListener('click', function() {
+      createEditModal(employee);
+    });
+
     $avatarContainer.innerHTML = avatar.getAvatar({
       width: 200
     });
-    let callback = (avatarProps) => {
-      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${avatarObj.id}`, {
-          properties: avatarProps,
-          employeeId: employee.id
-        })
-        .then((response) => {
-          updateAvatar(response.data.properties);
-        })
+    let onAvatarModalClose = (avatarProps) => {
+      console.log(avatarProps)
+      updateAvatar(avatarObj.id, avatarProps, employee.id, response => repaintAvatar(response.data.properties));
     }
-    $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatar.getProperties(), callback))
+    $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatar.getProperties(), onAvatarModalClose))
 
     function programateWink() {
       let $avatarContainer = document.querySelector('.employee__avatar');
@@ -131,7 +139,8 @@ include('./library/sessionHelper.php');
       return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    function updateAvatar(props) {
+    function repaintAvatar(props) {
+      console.log(props)
       avatar.setProperties(props);
       let $avatarContainer = document.querySelector('.employee__avatar');
       $avatarContainer.innerHTML = avatar.getAvatar({

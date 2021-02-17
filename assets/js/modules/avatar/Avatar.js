@@ -1,6 +1,5 @@
-import { Avataaars } from './avataaars.js';
-import { colorProperties } from './avatarOptions.js';
-import { DEF, FEMALE_DEF, MALE_DEF } from './default.js';
+import { Avataaars } from '../library/avataaars.js';
+import { COLOR_PROPERTIES, DEF, FEMALE_DEF, MALE_DEF } from '../components/avatarOptions.js';
 
 export class Avatar {
 
@@ -56,8 +55,8 @@ export class Avatar {
 				const randomIndex = getRandomInt(0, availableOptions.length-1);
 				this.properties[property] = availableOptions[randomIndex];
 			}
-			if(colorProperties[property]) {
-				const availableOptions = Object.keys(Avataaars.colors[colorProperties[property]]);
+			if(COLOR_PROPERTIES[property]) {
+				const availableOptions = Object.keys(Avataaars.colors[COLOR_PROPERTIES[property]]);
 				const randomIndex = getRandomInt(0, availableOptions.length-1);
 				this.properties[property] = availableOptions[randomIndex];
 			}

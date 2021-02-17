@@ -1,174 +1,185 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
-:root{
-    --dark: #17252a;
-    --light: #feffff;
-    --main: #3aafa9;
-    --secondary: #2b7a78;
-    --smooth: #def2f1;
+:root {
+	--dark: #17252a;
+	--light: #feffff;
+	--main: #3aafa9;
+	--secondary: #2b7a78;
+	--smooth: #def2f1;
 }
 
-
-body{
-    font-family: 'Lato', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-content: center;
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient( to bottom right, var(--main), var(--dark));
+body {
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-content: center;
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(to bottom right, var(--main), var(--dark));
 }
-.login{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    background-color: var(--smooth) ;
-    width: 30vw;
-    height: auto;
-    margin: auto;
-    padding: 1em;
-    box-shadow: 2px 2px 10px #0008;
-    border-radius: 10px;
+.login {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	background-color: var(--smooth);
+	width: 30vw;
+	height: auto;
+	margin: auto;
+	padding: 1em;
+	box-shadow: 2px 2px 10px #0008;
+	border-radius: 10px;
 }
 
 .login .bubble {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    top: -100px;
-    left: 50%;
-    height: 150px;
-    width: 300px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
-    transform: scale(0) translateY(-70%) translateX(-10%);
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	top: -100px;
+	left: 50%;
+	height: 150px;
+	width: 300px;
+	background: white;
+	border-radius: 50%;
+	box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+	transform: scale(0) translateX(-90%);
 }
 
 .login .bubble::before {
-    border: 35px solid white;
-    content: '';
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    border-right-color: transparent;
-    position: absolute;
-    bottom: -54px;
-    right: 75px;
-    transform: rotate(-23deg);
+	border: 35px solid white;
+	content: '';
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	position: absolute;
+	bottom: -54px;
+	right: 75px;
+	transform: rotate(-23deg);
 }
 
 .bubble > .joke-setup {
-    padding: 10px;
-    position: absolute;
-    transition: opacity 0.3s;
+	padding: 10px;
+	position: absolute;
+	transition: opacity 0.3s;
 }
 
 .bubble > .joke-punchline {
-    opacity: 0;
-    padding: 10px;
-    position: absolute;
-    transition: opacity 0.3s;
+	opacity: 0;
+	padding: 10px;
+	position: absolute;
+	transition: opacity 0.3s;
 }
 
-.login>#image{
-    cursor: pointer;
-    margin: 0 auto;
-    width:200px;
-    height: 200px;
+.login > #image {
+	cursor: pointer;
+	margin: 0 auto;
+	width: 200px;
+	height: 200px;
 }
 
-.login >form{
-    display: flex;
-    flex-direction: column;
-    font-size: large;
-    font-weight: bold;
-    width: 20vw;
-    margin: 1em auto;
-    color:var(--secondary)
-}
-.login >form>label{
-    padding: 0.2em 0;
-}
-.login >form >input{
-    margin-bottom: 1em;
-    font-size: large;
-    
+.login > form {
+	display: flex;
+	flex-direction: column;
+	font-size: large;
+	font-weight: bold;
+	width: 20vw;
+	margin: 1em auto;
+	color: var(--secondary);
 }
 
-.login >form >input[ type = submit]{
-    background-color: var(--main);
-    color: var(--light);
-    border: none;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px #000c;
-    width: fit-content;
-    margin: 0.2em auto;
-    padding: 0.2em 2em;
-    cursor: pointer;
-}
-.login >form >input[ type = submit]:hover, .login >form >input[ type = submit]:focus{
-    background-color: var(--secondary);
+.login > form > label {
+	padding: 0.2em 0;
 }
 
-
-.login >form >input[ type = email], .login >form >input[ type = password]{
-    cursor:text;
-    border: 1.5px solid var(--smooth);
-    border-radius: 5px;
-    padding: 0.2em;
-    box-shadow: inset 1px 1px 5px #0008;
-    color: var(--dark);
+.login > form > input {
+	margin-bottom: 1em;
+	font-size: large;
 }
 
-.login >form >input[ type = email]:focus, .login >form >input[ type = email]:hover, .login >form >input[ type = password]:focus, .login >form >input[ type = password]:hover{
-    outline:none;
-    border: 1.5px solid var(--secondary);
+.login > form > input[type='submit'] {
+	background-color: var(--main);
+	color: var(--light);
+	border: none;
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px #000c;
+	width: fit-content;
+	margin: 0.2em auto;
+	padding: 0.2em 2em;
+	cursor: pointer;
+}
 
+.login > form > input[type='submit']:hover,
+.login > form > input[type='submit']:focus {
+	background-color: var(--secondary);
+}
+
+.login > form > input[type='email'],
+.login > form > input[type='password'] {
+	cursor: text;
+	border: 1.5px solid var(--smooth);
+	border-radius: 5px;
+	padding: 0.2em;
+	box-shadow: inset 1px 1px 5px #0008;
+	color: var(--dark);
+}
+
+.login > form > input[type='email']:focus,
+.login > form > input[type='email']:hover,
+.login > form > input[type='password']:focus,
+.login > form > input[type='password']:hover {
+	outline: none;
+	border: 1.5px solid var(--secondary);
 }
 
 .theme__input {
-    color:#feffff;
-    background-color: #2b7a78;
-    border-radius: 10px;
-    font-size: large;
-    font-family: 'Lato', sans-serif;
-    margin: 10px;
-    border:none;
-    border: 2px solid #0000;
-    text-transform: capitalize;
+	color: #feffff;
+	background-color: #2b7a78;
+	border-radius: 10px;
+	font-size: large;
+	font-family: 'Lato', sans-serif;
+	margin: 10px;
+	border: none;
+	border: 2px solid #0000;
+	text-transform: capitalize;
 }
 
-.theme__input:hover, .theme__input:focus {
-    border: 2px solid var(--light);
-    outline: none;
+.theme__input:hover,
+.theme__input:focus {
+	border: 2px solid var(--light);
+	outline: none;
 }
 
-
-.loginErrorContainer{
-    top: -100px;
-    width: 100vw;
-    position: absolute;
-    animation: errorAnimation 10s;
+.loginErrorContainer {
+	top: -100px;
+	width: 100vw;
+	position: absolute;
+	animation: errorAnimation 10s;
 }
 
-.loginError{
-    background-color: var(--dark);
-    width: fit-content;
-    padding: 35px 100px;
-    margin: 0 auto;
-    color: var(--light);
-    border-radius: 0 0 5px 5px;
-    box-shadow: 2px 2px 10px #0008;
-    font-size: large;
+.loginError {
+	background-color: var(--dark);
+	width: fit-content;
+	padding: 35px 100px;
+	margin: 0 auto;
+	color: var(--light);
+	border-radius: 0 0 5px 5px;
+	box-shadow: 2px 2px 10px #0008;
+	font-size: large;
 }
 
 @keyframes errorAnimation {
-    0% { top: -100px;  }
-    10%, 90%{ top: 0; }
-    100% { top: -100px }
-  }
+	0% {
+		top: -100px;
+	}
+	10%,
+	90% {
+		top: 0;
+	}
+	100% {
+		top: -100px;
+	}
+}

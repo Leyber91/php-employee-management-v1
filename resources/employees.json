@@ -1,16 +1,16 @@
 [
     {
+        "id": 1,
         "name": "Pau",
         "lastName": "García",
-        "age": "10",
-        "gender": "male",
         "role": "Tech Lead",
         "email": "pau@assemblerschool.com",
-        "phoneNumber": "8",
+        "gender": "male",
+        "country": "España",
         "city": "Barcelona",
         "state": "Cataluña",
-        "country": "España",
-        "id": "1"
+        "age": null,
+        "phoneNumber": null
     },
     {
         "id": 2,
@@ -299,17 +299,17 @@
         "phoneNumber": null
     },
     {
+        "id": 24,
         "name": "Jan",
         "lastName": "Puig",
-        "age": "24",
-        "gender": "male",
         "role": "Student",
         "email": "janpuigcapella@gmail.com",
-        "phoneNumber": "123456789",
+        "gender": "male",
+        "age": null,
+        "country": "España",
         "city": "Barcelona",
         "state": "Cataluña",
-        "country": "España",
-        "id": "24"
+        "phoneNumber": null
     },
     {
         "id": 25,

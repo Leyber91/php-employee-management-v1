@@ -1,44 +1,45 @@
 .main {
-    background-color: var(--secondary);
+	background-color: var(--secondary);
 }
 
 #table-wrapper {
 	overflow: hidden;
 	text-align: center;
-	 margin:20px;
-
+	margin: 20px;
 }
 
-.gridjs-wrapper{
+.gridjs-wrapper {
 	border-radius: 0 8px 0 0;
-	
-	
 }
 
 .gridjs-container {
-    font-family: 'Lato', sans-serif;
+	font-family: 'Lato', sans-serif;
 	margin: 0 auto;
 	margin-bottom: 100px;
 }
 
-.gridjs-table{
+.gridjs-table {
 	margin: 0 auto;
 }
 
 .gridjs-tbody {
 	cursor: pointer;
 }
-th.gridjs-th{
+
+th.gridjs-th {
 	background-color: var(--smooth);
 	color: var(--dark);
 }
-.gridjs-td{
+
+.gridjs-td {
 	border: 1px solid black;
 }
+
 .gridjs-tbody > .gridjs-tr:hover .gridjs-td {
 	background-color: var(--smooth);
 }
-.gridjs-head{
+
+.gridjs-head {
 	margin-bottom: 0;
 	width: fit-content;
 	border-radius: 8px 8px 0 0;
@@ -48,6 +49,7 @@ th.gridjs-th{
 	overflow: hidden;
 	transition: all 0.5s ease-in-out;
 }
+
 .gridjs-head.unfolded {
 	margin-top: 00px;
 	height: 50px;
@@ -55,6 +57,7 @@ th.gridjs-th{
 	transition: all 0.5s ease-in-out;
 	background-color: var(--smooth);
 }
+
 .gridjs-search {
 	/* margin-left: 80px; */
 	background-color: transparent;
@@ -71,7 +74,7 @@ th.gridjs-th{
 	font-size: x-large;
 }
 
-.gridjs-head.unfolded .material-icons.gridjs-search-icon{
+.gridjs-head.unfolded .material-icons.gridjs-search-icon {
 	top: 13px;
 	left: 17px;
 	font-size: xx-large;
@@ -95,10 +98,12 @@ th.gridjs-th{
 	box-shadow: none;
 }
 
-.gridjs-head.unfolded .gridjs-search-input{
+.gridjs-head.unfolded .gridjs-search-input {
 	background-color: var(--smooth);
 }
-.gridjs-head:focus .gridjs-search-input, .gridjs-head:hover .gridjs-search-input{
+
+.gridjs-head:focus .gridjs-search-input,
+.gridjs-head:hover .gridjs-search-input {
 	background-color: var(--smooth);
 }
 
@@ -120,12 +125,11 @@ th.gridjs-th{
 	width: fit-content;
 }
 
-.gridjs-td[data-column-id='age'], 
+.gridjs-td[data-column-id='age'],
 .gridjs-td[data-column-id='state'],
 .gridjs-td[data-column-id='phoneNumber'],
 .gridjs-td[data-column-id='delete'],
-.gridjs-th[data-column-id='delete']
-{
+.gridjs-th[data-column-id='delete'] {
 	text-align: center;
 }
 
@@ -137,9 +141,8 @@ th.gridjs-th{
 
 .gridjs-td[data-column-id='name'] > span {
 	display: flex;
-    align-items: center;
-    gap: 10px;
-
+	align-items: center;
+	gap: 10px;
 }
 
 .gridjs-td[data-column-id='email'] .email-wrapper span {
@@ -159,7 +162,8 @@ th.gridjs-th{
 	color: var(--secondary);
 }
 
-.gridjs-td a:focus, .gridjs-td a:hover {
+.gridjs-td a:focus,
+.gridjs-td a:hover {
 	color: var(--main);
 }
 
@@ -188,7 +192,9 @@ th.gridjs-th{
 	color: var(--secondary);
 }
 
-.gridjs-th button:focus, .gridjs-th button:hover,
-.gridjs-td button:focus, .gridjs-td button:hover {
+.gridjs-th button:focus,
+.gridjs-th button:hover,
+.gridjs-td button:focus,
+.gridjs-td button:hover {
 	color: var(--main);
 }
