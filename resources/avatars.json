@@ -58,20 +58,19 @@
     },
     {
         "properties": {
-            "skin": "yellow",
-            "top": "dreads",
+            "skin": "pale",
+            "top": "shortRound",
             "hairColor": "black",
             "hatColor": "blue01",
-            "accessories": "round",
             "accessoriesColor": "pastelOrange",
             "facialHair": "default",
             "facialHairColor": "red",
-            "clothing": "overall",
+            "clothing": "shirtCrewNeck",
             "clothingGraphic": "dumbia",
-            "clothingColor": "red",
-            "eyes": "closed",
-            "eyebrows": "raisedExcited",
-            "mouth": "screamOpen"
+            "clothingColor": "pastelOrange",
+            "eyes": "default",
+            "eyebrows": "defaultNatural",
+            "mouth": "twinkle"
         },
         "employeeId": 4,
         "id": 303
