@@ -1,18 +1,16 @@
 [
     {
+        "id": 1,
         "name": "Pau",
         "lastName": "García",
-        "age": "",
-        "gender": "male",
         "role": "Tech Lead",
         "email": "pau@assemblerschool.com",
-        "phoneNumber": "",
+        "gender": "male",
+        "country": "España",
         "city": "Barcelona",
         "state": "Cataluña",
-        "country": "España",
-        "githubLink": "",
-        "linkedinLink": "",
-        "id": "1"
+        "age": null,
+        "phoneNumber": null
     },
     {
         "id": 2,
