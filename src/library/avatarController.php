@@ -23,7 +23,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             die();
         }
         $updated = updateAvatar($avatarData);
-        http_response_code(201);
+        http_response_code(204);
         echo json_encode($updated);
         break;
     }

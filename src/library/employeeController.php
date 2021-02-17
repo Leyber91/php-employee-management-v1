@@ -22,6 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'PUT': {
             $employeeData = file_get_contents('php://input');
             updateEmployee(json_decode($employeeData, true));
+            http_response_code(201);
             break;
         }
     case 'DELETE': {
