@@ -92,6 +92,9 @@ include('./library/sessionHelper.php');
     import {
       createEditModal
     } from "../assets/js/modules/components/editModal.js";
+    import {
+      updateAvatar
+    } from "../assets/js/modules/service/avatar-service.js";
 
     let $avatarContainer = document.querySelector('.employee__avatar');
     let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
@@ -110,13 +113,8 @@ include('./library/sessionHelper.php');
       width: 200
     });
     let onAvatarModalClose = (avatarProps) => {
-      axios.put(`http://localhost/php-employee-management-v1/src/library/avatarController.php?id=${avatarObj.id}`, {
-          properties: avatarProps,
-          employeeId: employee.id
-        })
-        .then((response) => {
-          repaintAvatar(response.data.properties);
-        })
+      console.log(avatarProps)
+      updateAvatar(avatarObj.id, avatarProps, employee.id, response => repaintAvatar(response.data.properties));
     }
     $avatarContainer.addEventListener('click', () => createAvatarModal(employee.gender, avatar.getProperties(), onAvatarModalClose))
 
@@ -142,6 +140,7 @@ include('./library/sessionHelper.php');
     }
 
     function repaintAvatar(props) {
+      console.log(props)
       avatar.setProperties(props);
       let $avatarContainer = document.querySelector('.employee__avatar');
       $avatarContainer.innerHTML = avatar.getAvatar({

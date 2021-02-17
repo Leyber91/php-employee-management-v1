@@ -11,9 +11,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST': {
             if (isset($_POST)) {
                 $added = addEmployee($_POST);
-                http_response_code(201);
                 header('Location: http://localhost/php-employee-management-v1/src/dashboard.php');
                 echo json_encode($added);
+                http_response_code(201);
             } else {
                 http_response_code(400);
             }
@@ -22,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'PUT': {
             $employeeData = file_get_contents('php://input');
             updateEmployee(json_decode($employeeData, true));
-            http_response_code(201);
+            http_response_code(204);
             break;
         }
     case 'DELETE': {

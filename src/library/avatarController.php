@@ -10,8 +10,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
     }
     case 'POST': {
         $added = addAvatar(json_decode(file_get_contents('php://input'), true));
-        http_response_code(201);
         echo json_encode($added);
+        http_response_code(201);
         break;
     }
     case 'PUT': {
@@ -23,8 +23,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             die();
         }
         $updated = updateAvatar($avatarData);
-        http_response_code(204);
-        echo json_encode($updated);
+        echo json_encode($updated);        
+        http_response_code(200);
         break;
     }
 }
