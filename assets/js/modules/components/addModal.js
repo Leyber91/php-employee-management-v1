@@ -10,7 +10,6 @@ export function createAddModal() {
 	addModal.className = 'add-modal centered-modal';
 	const avatar = new Avatar('other');
 	addModal.innerHTML = `
-    <h3 class="modal-title">Add new employee</h3>
     <div class="modal-image" id="modal-image">${avatar.getAvatar({ width: 300 })}</div>
     <form action="http://localhost/php-employee-management-v1/src/library/employeeController.php" method="POST">
         <div class="fields">
@@ -75,7 +74,7 @@ export function createAddModal() {
             </div>
         </div>
         <label for="submit" hidden>Submit</label>
-        <input type="submit" name="submit" class="modal__input">
+        <input value="Create" type="submit" name="submit" class="modal__input">
     </form>
     `;
 

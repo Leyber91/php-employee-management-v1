@@ -46,7 +46,7 @@ body {
 	background: white;
 	border-radius: 50%;
 	box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
-	transform: scale(0) translateY(-70%) translateX(-10%);
+	transform: scale(0) translateX(-90%);
 }
 
 .login .bubble::before {

@@ -58,18 +58,24 @@ include('./library/sessionHelper.php');
               <a href='callto:" . $employee['phoneNumber'] . "'>          
                 <span class='material-icons contact__icon'>stay_primary_portrait</span>
               </a>
-            </div>
-            <div class='awesome employee__linkedin'>
-              <a href='" . $employee['linkedinLink'] . "'>      
-                <span class='fab fa-linkedin contact__icon'></span>    
+            </div>".
+            (isset($employee['linkedinLink']) ?
+            "<div class='awesome employee__linkedin'>
+              <a href='" . "https://" . $employee['linkedinLink'] . "'>   
+                <span class='fab fa-linkedin contact__icon'></span>       
               </a>
-            </div>
-            <div class='awesome employee__github'>
-              <a href='" . $employee['githubLink'] . "'>   
+            </div>" : 
+            '')
+            .""
+            .
+            (isset($employee['githubLink']) ?
+            "<div class='awesome employee__github'>
+              <a href='" . "https://" . $employee['githubLink'] . "'>   
                 <span class='fab fa-github contact__icon'></span>       
               </a>
-            </div>
-          </div>
+            </div>" : 
+            '')
+            ."
         </div>
         </section>"
 
