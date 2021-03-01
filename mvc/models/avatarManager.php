@@ -1,8 +1,8 @@
 <?php
 
-define("AVATARS_JSON_PATH", $_SERVER["DOCUMENT_ROOT"] . "/php-employee-management-v1/resources/avatars.json");
+define("AVATARS_JSON_PATH", "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/avatars.json");
 
-require_once('helper.php');
+require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
 
 function addAvatar(array $newAvatar)
 {

@@ -1,9 +1,9 @@
 <?php
 
-define("EMPLOYEES_JSON_PATH", $_SERVER["DOCUMENT_ROOT"] . "/php-employee-management-v1/resources/employees.json");
+define("EMPLOYEES_JSON_PATH", "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/employees.json");
 
-require_once('helper.php');
-require_once('avatarManager.php');
+require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
+require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatarManager.php');
 
 function addEmployee(array $newEmployee)
 {

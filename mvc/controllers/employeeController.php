@@ -1,17 +1,18 @@
 <?php
 
-require('employeeManager.php');
+require('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/employeeManager.php');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET': {
             $ids = !empty($_GET['ids']) ? explode(',', $_GET['ids']) : [];
+
             echo getEmployees($ids);
             break;
         }
     case 'POST': {
             if (isset($_POST)) {
                 $added = addEmployee($_POST);
-                header('Location: http://localhost/php-employee-management-v1/src/dashboard.php');
+                header('Location: http://localhost:8000/mvc/views/dashboard.php');
                 echo json_encode($added);
                 http_response_code(201);
             } else {

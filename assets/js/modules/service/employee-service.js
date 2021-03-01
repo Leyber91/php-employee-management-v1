@@ -1,4 +1,4 @@
-export const EMPLOYEE_URL = '../src/library/employeeController.php';
+export const EMPLOYEE_URL = 'http://localhost:8000/mvc/controllers/employeeController.php';
 
 export function deleteEmployee(id, onSucess) {
 	axios
