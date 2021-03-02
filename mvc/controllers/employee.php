@@ -1,6 +1,6 @@
 <?php
 
-require('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/employeeManager.php');
+require('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/employee.php');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET': {

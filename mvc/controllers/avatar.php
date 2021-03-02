@@ -1,6 +1,6 @@
 <?php
 
-require('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatarManager.php');
+require('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET': {

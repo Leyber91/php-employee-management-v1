@@ -1,7 +1,6 @@
 <?php
 
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/loginManager.php');
-
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/login.php');
 
 class Login
 {
@@ -12,28 +11,31 @@ class Login
     {
         $this->email = $_POST['email'];
         $this->password = $_POST['password'];
-
-        $this->checkLogin();
+        $this->model = new LoginModel();
+        $this->getView();
     }
 
-    public function checkLogin()
+    public function logOut()
+    {
+        $this->model->logOut();
+
+        include_once "mvc/views/login.php";
+    }
+
+    public function getView()
     {
         $email = $this->email;
         $password = $this->password;
 
         if (isset($email)) 
         {
-            $hasLoggedIn = LoginModel::logIn($email, $password);
+            $hasLoggedIn = $this->model->logIn($email, $password);
 
             if ($hasLoggedIn) {
-                header('Location: http://localhost:8000/mvc/views/dashboard.php');
-            } else {
-                header('Location: http://localhost:8000/?error=true');
+                include_once "mvc/views/dashboard.php";
             }
         } else {
-            $hasLoggedOut = LoginModel::logOut();
-    
-            header('Location: http://localhost:8000/mvc/views/login.php');
+            include_once "mvc/views/login.php";
         }
     }
 }

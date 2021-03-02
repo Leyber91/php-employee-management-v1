@@ -3,7 +3,7 @@
 define("EMPLOYEES_JSON_PATH", "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/employees.json");
 
 require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
-require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatarManager.php');
+require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
 
 function addEmployee(array $newEmployee)
 {

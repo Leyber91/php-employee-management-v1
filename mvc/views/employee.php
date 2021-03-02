@@ -1,6 +1,6 @@
 <?php
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/loginManager.php');
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatarManager.php');
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/login.php');
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
 include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/sessionHelper.php');
 ?>
 

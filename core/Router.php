@@ -26,12 +26,12 @@ class Router
 
     public function setMethod()
     {
-        $this->method = !empty($this->uri[2]) ? $this->uri[2] : 'exec';
+        $this->method = empty($this->uri[2]) ? 'getView' : $this->uri[2];
     }
 
     public function setParam()
     {
-        $this->param = !empty($this->uri[3]) ? $this->uri[3] : '';
+        $this->param = empty($this->uri[3]) ? '' : $this->uri[3];
     }
 
 

@@ -1,6 +1,6 @@
 <?php
-include_once('./library/employeeManager.php');
-include_once('./library/avatarManager.php');
+include_once('mvc/models/employee.php');
+include_once('mvc/models/avatar.php');
 include('./library/sessionHelper.php');
 ?>
 

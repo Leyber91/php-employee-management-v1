@@ -5,7 +5,7 @@ export function createEditModal(employee) {
 	const editModal = document.createElement('div');
 	editModal.className = 'add-modal centered-modal';
 	editModal.innerHTML = `
-    <form action="mvc/contoller/employeeController.php" method="PUT">
+    <form action="mvc/contollers/employee.php" method="PUT">
         <input type="text" name="name" required class="modal__input" value='${employee['id']}' style='display:none'>
         <div class="fields">
             <div class="labeled-input">

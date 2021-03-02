@@ -1,4 +1,4 @@
-export const AVATAR_URL = 'http://localhost:8000/mvc/controllers/avatarController.php';
+export const AVATAR_URL = 'http://localhost:8000/mvc/controllers/avatar.php';
 
 export function addAvatar(employeeId, avatarProps, onSuccess) {
 	axios
@@ -14,7 +14,7 @@ export function addAvatar(employeeId, avatarProps, onSuccess) {
 
 export function updateAvatar(id, avatarProps, employeeId, onSuccess) {
 	axios
-		.put(`http://localhost/php-employee-management-v1/mvc/contollers/avatarController.php?id=${id}`, {
+		.put(`http://localhost/php-employee-management-v1/mvc/contollers/avatar.php?id=${id}`, {
 			properties: avatarProps,
 			employeeId: employeeId,
 		})

@@ -24,11 +24,11 @@
 
 <body class='dashboard'>
 
-    <?php include('../../assets/html/header.html'); ?>
+    <?php include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/assets/html/header.html'); ?>
     <main class='main'>
         <div id='table-wrapper'></div>
     </main>
-    <?php include('../../assets/html/footer.html'); ?>
+    <?php include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/assets/html/footer.html'); ?>
 </body>
 
 </html>

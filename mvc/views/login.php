@@ -1,5 +1,5 @@
 <?php
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatarManager.php');
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
 $avatars = getAvatars();
 ?>
 
@@ -21,9 +21,9 @@ $avatars = getAvatars();
     }
     ?>
     <section class="login">
-        <?php include_once('./jokeBubble.php'); ?>
+        <?php include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/views/jokeBubble.php'); ?>
         <div id='image'></div>
-        <form action="login" method="post">
+        <form action="http://localhost:8000/login/getView" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
             <label for="password">Password:</label>
@@ -35,7 +35,7 @@ $avatars = getAvatars();
     <script type="module">
         import {
             Avatar
-        } from "./assets/js/modules/avatar/Avatar.js";
+        } from "http://localhost:8000/assets/js/modules/avatar/Avatar.js";
 
         let mainAvatarImage = '';
         let eyesClosedImage = '';
