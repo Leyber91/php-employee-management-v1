@@ -6,14 +6,14 @@ class App
     public $router;
     public $controllerPath;
     public $controllerName;
+    public $param;
 
     public function __construct($router)
     {
         $this->controllerName = $router->getController();
-        $this->controllerPath = "mvc/controllers/" . $this->controllerName . ".php";
         $this->method = $router->getMethod();
-
-        //echo $this->method;
+        $this->param = $router->getParam();
+        $this->controllerPath = "mvc/controllers/" . $this->controllerName . ".php";
 
         if (file_exists($this->controllerPath))
         {
@@ -21,7 +21,7 @@ class App
 
             $controller = new $this->controllerName;
 
-            $controller->{$this->method}();
+            $controller->{$this->method}($this->param);
 
         } else {
             $controller = new Errors();

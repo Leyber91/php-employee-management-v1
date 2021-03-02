@@ -1,7 +1,5 @@
 <?php
-include_once('mvc/models/employee.php');
 include_once('mvc/models/avatar.php');
-include('./library/sessionHelper.php');
 ?>
 
 <!DOCTYPE html>

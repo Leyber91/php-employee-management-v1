@@ -1,7 +1,5 @@
 <?php
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/login.php');
 include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
-include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/sessionHelper.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,9 +12,9 @@ include('/Users/victorgreco/Documents/personal_projects/php-employee-management-
   <script src="https://kit.fontawesome.com/4f8800fac8.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/employee.css">
-  <link rel="stylesheet" href="../assets/css/modal.css">
+  <link rel="stylesheet" href="http://localhost:8000/assets/css/main.css">
+  <link rel="stylesheet" href="http://localhost:8000/assets/css/employee.css">
+  <link rel="stylesheet" href="http://localhost:8000/assets/css/modal.css">
 
   <title>Employee</title>
 </head>
@@ -24,53 +22,50 @@ include('/Users/victorgreco/Documents/personal_projects/php-employee-management-
 <body class='employee' id='employee'>
   <?php include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/assets/html/header.html'); ?>
   <?php
-  if (isset($_GET['id'])) {
-    $employee = getEmployeeAsArray($_GET['id']);
-    $avatar = getAvatar($employee['id']);
-  } else {
-    die();
+
+  $avatar = getAvatar($employee->id);
+
+  // if (!isset($employee->linkedinLink)) { TODO: Review Warning
+  //   $employe->linkedinLink = null;
+  // }
+  if (!isset($employee->githubLink)) {
+    $employee->githubLink = null;
   }
-  if (!isset($employee['linkedinLink'])) {
-    $employee['linkedinLink'] = null;
-  }
-  if (!isset($employee['githubLink'])) {
-    $employee['githubLink'] = null;
-  }
-  if( !isset( $employee['age'] ) ){
-    $employee['age']=' - ';
+  if( !isset( $employee->age ) ){
+    $employee->age=' - ';
   }
 
   echo "<section class='employee__page'>
-    <button id='employeeEditButton' class='material-icons employee__edit__button' data-id='" . $employee['id'] . "'>edit</button>
+    <button id='employeeEditButton' class='material-icons employee__edit__button' data-id='" . $employee->id . "'>edit</button>
         <div class='employee__avatar'></div>
         <div class='employee__info'>
-          <h2 class='employee__name'>" . $employee['name'] . " " . $employee['lastName'] . "</h2>
-          <h4 class='employee__info'>" . $employee['gender'] . ", " . $employee['age'] . "</h4>
-          <h4 class='employee__role'>" . $employee['role'] . "</h4>
-          <h4 class='employee__ubication'>" . $employee['city'] . ", " .$employee['state'] . ", " . $employee['country'] . "</h4>
+          <h2 class='employee__name'>" . $employee->name . " " . $employee->lastName . "</h2>
+          <h4 class='employee__info'>" . $employee->gender . ", " . $employee->age . "</h4>
+          <h4 class='employee__role'>" . $employee->role . "</h4>
+          <h4 class='employee__ubication'>" . $employee->city . ", " .$employee->state . ", " . $employee->country . "</h4>
           <div class='employee__contact'>
             <div class='employee__email'>
-              <a href='mailto:" . $employee['email'] . "'>          
+              <a href='mailto:" . $employee->email . "'>          
                 <span class='material-icons contact__icon'>email</span>
               </a>
             </div>
             <div class='employee__phone'>
-              <a href='callto:" . $employee['phoneNumber'] . "'>          
+              <a href='callto:" . $employee->phoneNumber . "'>          
                 <span class='material-icons contact__icon'>stay_primary_portrait</span>
               </a>
             </div>".
-            (isset($employee['linkedinLink']) ?
+            (isset($employee->linkedinLink) ?
             "<div class='awesome employee__linkedin'>
-              <a href='" . "https://" . $employee['linkedinLink'] . "'>   
+              <a href='" . "https://" . $employee->linkedinLink . "'>   
                 <span class='fab fa-linkedin contact__icon'></span>       
               </a>
             </div>" : 
             '')
             .""
             .
-            (isset($employee['githubLink']) ?
+            (isset($employee->githubLink) ?
             "<div class='awesome employee__github'>
-              <a href='" . "https://" . $employee['githubLink'] . "'>   
+              <a href='" . "https://" . $employee->githubLink . "'>   
                 <span class='fab fa-github contact__icon'></span>       
               </a>
             </div>" : 

@@ -1,5 +1,4 @@
 <?php
-    include('./library/sessionHelper.php')
 ?>
 
 <!DOCTYPE html>

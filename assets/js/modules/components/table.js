@@ -130,7 +130,7 @@ export function initTable() {
 
 	grid.on('rowClick', (...args) => {
 		if (!args[0].target.classList.contains('material-icons')) {
-			window.location.href = `/mvc/views/employee.php?id=${args[1].cells[0].data}`;
+			window.location.href = `http://localhost:8000/employee/getEmployeeView/${args[1].cells[0].data}`;
 		}
 	});
 

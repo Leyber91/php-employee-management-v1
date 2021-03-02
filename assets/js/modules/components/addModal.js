@@ -11,7 +11,7 @@ export function createAddModal() {
 	const avatar = new Avatar('other');
 	addModal.innerHTML = `
     <div class="modal-image" id="modal-image">${avatar.getAvatar({ width: 300 })}</div>
-    <form action="/mvc/contollers/employee.php" method="POST">
+    <form action="http://localhost:8000/employee/addEmployee" method="POST">
         <div class="fields">
             <div class="labeled-input">
                 <label for="name">Name</label>

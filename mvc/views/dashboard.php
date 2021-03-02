@@ -1,5 +1,4 @@
 <?php
-    include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/sessionHelper.php')
 ?>
 
 <!DOCTYPE html>

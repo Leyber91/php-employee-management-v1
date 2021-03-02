@@ -12,17 +12,21 @@ class Login
         $this->email = $_POST['email'];
         $this->password = $_POST['password'];
         $this->model = new LoginModel();
-        $this->getView();
     }
 
-    public function logOut()
+    public function logOut($param)
     {
         $this->model->logOut();
 
         include_once "mvc/views/login.php";
     }
 
-    public function getView()
+    public function getDashboardView($param)
+    {
+        include_once "mvc/views/dashboard.php";
+    }
+
+    public function getView($param)
     {
         $email = $this->email;
         $password = $this->password;
@@ -32,7 +36,7 @@ class Login
             $hasLoggedIn = $this->model->logIn($email, $password);
 
             if ($hasLoggedIn) {
-                include_once "mvc/views/dashboard.php";
+                $this->getDashboardView($param);
             }
         } else {
             include_once "mvc/views/login.php";

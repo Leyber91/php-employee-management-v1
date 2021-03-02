@@ -1,92 +1,110 @@
 <?php
-
-define("EMPLOYEES_JSON_PATH", "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/employees.json");
-
-require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
-require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
-
-function addEmployee(array $newEmployee)
+class EmployeeModel
 {
-    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    $newEmployee['id'] = end($employees)['id'] + 1;
-    array_push($employees, $newEmployee);
+    public $employeeJson;
+    function __construct()
+    {
+        $this->employeeJson = "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/employees.json";
 
-    saveArrayAsJson(EMPLOYEES_JSON_PATH, $employees);
-    return $newEmployee;
-}
-
-function deleteEmployee(int $id)
-{
-    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    $employee = findItemWithId($employees, $id);
-
-    if ($employee) {
-        unset($employees[$employee->key]);
-        saveArrayAsJson(EMPLOYEES_JSON_PATH, $employees);
-
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function updateEmployee(array $updateEmployee)
-{
-    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    $employee = findItemWithId($employees, $updateEmployee['id']);
-
-    if ($employee) {
-        $employee->value = $updateEmployee;
-    } else {
-        array_push($employees, $updateEmployee);
+        require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
+        require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
     }
 
-    saveArrayAsJson(EMPLOYEES_JSON_PATH, array_sort($employees, 'id'));
-}
-
-function getEmployees(array $ids = [])
-{
-    if (empty($ids)) {
-        $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-        $allEmployees = array();
-        foreach($employees as $employee) {
-            $avatar = json_decode(getAvatar($employee['id']), true);
-            $employee['avatar'] = $avatar;
-            array_push($allEmployees, $employee);
-        }
-        return encodeJson(array_values($allEmployees));
-    }
- 
-    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-
-    $foundEmployees = array();
-    foreach ($ids as $id) {
-        $avatar = json_decode(getAvatar($id), true);
-        $found = findItemWithId($employees, $id);
-        if ($found) {
-            $found->value['avatar'] = $avatar;
-            array_push($foundEmployees, $found->value);
-        }
-    }
-
-    return encodeJson(array_values($foundEmployees));
-}
-
-function getEmployee(int $id)
-{
-    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    $found = findItemWithId($employees, $id);
+    public function addEmployee(array $newEmployee)
+    {
+        $employees = decodeJsonFile($this->employeeJson);
+        $newEmployee['id'] = end($employees)['id'] + 1;
+        array_push($employees, $newEmployee);
     
-    $employee = $found ? $found->value : array();
+        saveArrayAsJson($this->employeeJson, $employees);
 
-    return encodeJson($employee);
+        return $newEmployee;
+    }
+
+    public function deleteEmployee(int $id)
+    {
+        $employees = decodeJsonFile($this->employeeJson);
+        $employee = findItemWithId($employees, $id);
+
+        if ($employee) {
+            unset($employees[$employee->key]);
+            saveArrayAsJson($this->employeeJson, $employees);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updateEmployee(array $updateEmployee)
+    {
+        $employees = decodeJsonFile($this->employeeJson);
+        $employee = findItemWithId($employees, $updateEmployee['id']);
+
+        if ($employee) {
+            $employee->value = $updateEmployee;
+        } else {
+            array_push($employees, $updateEmployee);
+        }
+
+        saveArrayAsJson($this->employeeJson, array_sort($employees, 'id'));
+    }
+
+    public function getEmployees(array $ids = [])
+    {
+        if (empty($ids)) {
+            $employees = decodeJsonFile($this->employeeJson);
+            $allEmployees = array();
+
+            foreach($employees as $employee) {
+                $avatar = json_decode(getAvatar($employee['id']), true);
+                $employee['avatar'] = $avatar;
+                array_push($allEmployees, $employee);
+            }
+
+            return encodeJson(array_values($allEmployees));
+        }
+    
+        $employees = decodeJsonFile($this->employeeJson);
+
+        $foundEmployees = array();
+        foreach ($ids as $id) {
+            $avatar = json_decode(getAvatar($id), true);
+            $found = findItemWithId($employees, $id);
+            if ($found) {
+                $found->value['avatar'] = $avatar;
+                array_push($foundEmployees, $found->value);
+            }
+        }
+
+        return encodeJson(array_values($foundEmployees));
+    }
+
+    public function getEmployee(int $id)
+    {
+        $employees = decodeJsonFile($this->employeeJson);
+        $found = findItemWithId($employees, $id);
+        
+        $employee = $found ? $found->value : array();
+
+        return encodeJson($employee);
+    }
+
+    public function getEmployeeAsArray(int $id)
+    {
+        $employees = decodeJsonFile($this->employeeJson);
+        $found = findItemWithId($employees, $id);
+        $employee = $found ? $found->value : array();
+
+        return $employee;
+    }
 }
 
-function getEmployeeAsArray(int $id)
-{
-    $employees = decodeJsonFile(EMPLOYEES_JSON_PATH);
-    $found = findItemWithId($employees, $id);
-    $employee = $found ? $found->value : array();
-    return $employee;
-}
+
+
+
+
+
+
+
 

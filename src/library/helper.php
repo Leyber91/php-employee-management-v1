@@ -1,6 +1,5 @@
 <?php
-
-function findItemWithId(array &$array, string $id)
+function findItemWithId(array &$array, int $id)
 {
     foreach ($array as $key => &$item) {
         if ($item['id'] == $id) {
