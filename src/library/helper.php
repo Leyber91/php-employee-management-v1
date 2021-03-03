@@ -12,7 +12,7 @@ function findItemWithId(array &$array, int $id)
     return false;
 }
 
-function findItemWithEmployeeId(array &$array, string $id)
+function findItemWithEmployeeId(&$array, $id)
 {
     foreach ($array as $key => &$item) {
         if ($item['employeeId'] == $id) {
@@ -37,6 +37,7 @@ function decodeJsonFile(string $path)
 
 function saveArrayAsJson(string $path, array $array)
 {
+
     $fileData = encodeJson(array_values($array));
     file_put_contents($path, $fileData);
 }

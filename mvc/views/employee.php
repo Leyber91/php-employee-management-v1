@@ -1,7 +1,3 @@
-<?php
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +18,6 @@ include_once('/Users/victorgreco/Documents/personal_projects/php-employee-manage
 <body class='employee' id='employee'>
   <?php include('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/assets/html/header.html'); ?>
   <?php
-
-  $avatar = getAvatar($employee->id);
-
   // if (!isset($employee->linkedinLink)) { TODO: Review Warning
   //   $employe->linkedinLink = null;
   // }
@@ -80,19 +73,19 @@ include_once('/Users/victorgreco/Documents/personal_projects/php-employee-manage
   <script type="module">
     import {
       Avatar
-    } from '../assets/js/modules/avatar/Avatar.js'
+    } from 'http://localhost:8000/assets/js/modules/avatar/Avatar.js'
     import {
       createAvatarModal
-    } from "../assets/js/modules/components/avatarModal.js";
+    } from "http://localhost:8000/assets/js/modules/components/avatarModal.js";
     import {
       createEditModal
-    } from "../assets/js/modules/components/editModal.js";
+    } from "http://localhost:8000/assets/js/modules/components/editModal.js";
     import {
       updateAvatar
-    } from "../assets/js/modules/service/avatar-service.js";
+    } from "http://localhost:8000/assets/js/modules/service/avatar-service.js";
 
     let $avatarContainer = document.querySelector('.employee__avatar');
-    let employee = JSON.parse(<?php echo json_encode(getEmployee($_GET['id'])); ?>);
+    let employee = <?php echo json_encode($employee) ?>;
     let avatarObj = JSON.parse(<?php echo json_encode($avatar); ?>);
     avatarObj = avatarObj ? avatarObj : {
       properties: {}
@@ -100,7 +93,9 @@ include_once('/Users/victorgreco/Documents/personal_projects/php-employee-manage
     let avatar = new Avatar(employee.gender, avatarObj.properties);
 
     const $editButon = document.getElementById('employeeEditButton');
+
     $editButon.addEventListener('click', function() {
+
       createEditModal(employee);
     });
 

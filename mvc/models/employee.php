@@ -8,6 +8,8 @@ class EmployeeModel
 
         require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
         require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
+
+        $this->avatarModel = new AvatarModel();
     }
 
     public function addEmployee(array $newEmployee)
@@ -36,13 +38,15 @@ class EmployeeModel
         }
     }
 
-    public function updateEmployee(array $updateEmployee)
+    public function updateEmployee($updateEmployee, int $id)
     {
+        $updateEmployee['id'] = (int)$updateEmployee['id'];
         $employees = decodeJsonFile($this->employeeJson);
-        $employee = findItemWithId($employees, $updateEmployee['id']);
+        $employee = findItemWithId($employees, $id);
 
         if ($employee) {
-            $employee->value = $updateEmployee;
+            $employees[$id -1] = $updateEmployee;
+
         } else {
             array_push($employees, $updateEmployee);
         }
@@ -57,7 +61,7 @@ class EmployeeModel
             $allEmployees = array();
 
             foreach($employees as $employee) {
-                $avatar = json_decode(getAvatar($employee['id']), true);
+                $avatar = json_decode($this->avatarModel->getAvatar($employee['id']), true);
                 $employee['avatar'] = $avatar;
                 array_push($allEmployees, $employee);
             }
@@ -69,7 +73,7 @@ class EmployeeModel
 
         $foundEmployees = array();
         foreach ($ids as $id) {
-            $avatar = json_decode(getAvatar($id), true);
+            $avatar = json_decode($this->avatarModel->getAvatar($id), true);
             $found = findItemWithId($employees, $id);
             if ($found) {
                 $found->value['avatar'] = $avatar;

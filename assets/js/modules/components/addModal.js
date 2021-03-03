@@ -90,17 +90,6 @@ export function createAddModal() {
 	addModal
 		.querySelector('#modal-image')
         .addEventListener('click', () => createAvatarModal('other', avatar.getProperties(), onAvatarModalClose));
-        
-    // addModal.querySelector('form').addEventListener('submit', (event) => {
-    //     event.preventDefault();
-    //     const formData = new FormData(event.target);
-    //     addEmployee(formData, (response) => {
-    //         addAvatar(response.data.id, avatar.getProperties(), () => {
-    //             closeModal();
-    //             updateTable();
-    //         });
-    //     });
-    // });
 
 	function repaintAvatar() {
 		document.querySelector('#modal-image').innerHTML = avatar.getAvatar({ width: 300 });

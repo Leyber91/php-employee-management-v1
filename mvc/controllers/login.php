@@ -1,6 +1,8 @@
 <?php
 
 include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/login.php');
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
+
 
 class Login
 {
@@ -12,10 +14,13 @@ class Login
         $this->email = $_POST['email'];
         $this->password = $_POST['password'];
         $this->model = new LoginModel();
+        $this->avatarModel = new AvatarModel();
     }
 
     public function logOut($param)
     {
+        $avatars = $this->avatarModel->getAvatars();
+
         $this->model->logOut();
 
         include_once "mvc/views/login.php";
@@ -23,6 +28,7 @@ class Login
 
     public function getDashboardView($param)
     {
+
         include_once "mvc/views/dashboard.php";
     }
 
@@ -39,6 +45,8 @@ class Login
                 $this->getDashboardView($param);
             }
         } else {
+            $avatars = $this->avatarModel->getAvatars();
+
             include_once "mvc/views/login.php";
         }
     }

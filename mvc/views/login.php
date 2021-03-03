@@ -1,8 +1,3 @@
-<?php
-include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
-$avatars = getAvatars();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

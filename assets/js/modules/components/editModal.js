@@ -4,9 +4,11 @@ import { openModal } from '../util/modal.js';
 export function createEditModal(employee) {
 	const editModal = document.createElement('div');
 	editModal.className = 'add-modal centered-modal';
+
 	editModal.innerHTML = `
-    <form action="mvc/contollers/employee.php" method="PUT">
-        <input type="text" name="name" required class="modal__input" value='${employee['id']}' style='display:none'>
+    <form action="http://localhost:8000/employee/updateEmployee/${employee.id}" method="POST">
+        <input type="text" name="id" required class="modal__input" value='${employee.id}' style='display:none'>
+        <input type="text" name="name" required class="modal__input" value='${employee.id}' style='display:none'>
         <div class="fields">
             <div class="labeled-input">
                 <label for="name">Name</label>
@@ -76,15 +78,13 @@ export function createEditModal(employee) {
     </form>
     `;
 
-	const closeModal = openModal({
-		node: editModal,
-	});
+	openModal({ node: editModal });
 
-	editModal.querySelector('form').addEventListener('submit', (event) => {
-		event.preventDefault();
-		const formData = new FormData(event.target);
-		formData.append('id', employee.id);
-		const value = Object.fromEntries(formData.entries());
-		updateEmployee(value, closeModal);
-	});
+	// editModal.querySelector('form').addEventListener('submit', (event) => {
+	// 	event.preventDefault();
+	// 	const formData = new FormData(event.target);
+	// 	formData.append('id', employee.id);
+	// 	const value = Object.fromEntries(formData.entries());
+	// 	updateEmployee(value, closeModal);
+	// });
 }
