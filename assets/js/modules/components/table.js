@@ -142,7 +142,6 @@ export function updateTable() {
 		server: server,
 	}).forceRender();
 	appendSearchIcon();
-	manageInputFocusEvents();
 }
 
 function appendSearchIcon() {

@@ -31,15 +31,13 @@ class Employee
 
     public function addEmployee($param)
     {
+
+        // TODO: file_put_contents('php://stderr', print_r("name:" . $_POST, TRUE)); // Terminal log in php
+
         if (isset($_POST)) {
-            $added = $this->model>addEmployee($_POST);
+            $added = $this->model->addEmployee($_POST);
 
             include_once "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/views/dashboard.php";
-
-            echo json_encode($added);
-            http_response_code(201);
-        } else {
-            http_response_code(400);
         }
     }
 }
