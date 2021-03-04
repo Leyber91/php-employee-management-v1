@@ -1,4 +1,5 @@
 <?php
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/awsMySqlConnector.php');
 
 class AvatarModel
 {
@@ -8,6 +9,7 @@ class AvatarModel
     {
         $this->avatarJsonPath = "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/avatars.json";
         require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/src/library/helper.php');
+        $this->dbconn = new AwsMySqlConnector();
     }
 
     public function addAvatar(array $newAvatar)
@@ -54,6 +56,8 @@ class AvatarModel
     public function getAvatars(array $employeeIds = [])
     {
 
+
+
         if (empty($employeeIds)) {
             return file_get_contents($this->avatarJsonPath);
         }
@@ -73,11 +77,12 @@ class AvatarModel
 
     public function getAvatar($employeeId)
     {
-        $avatars = decodeJsonFile($this->avatarJsonPath);
-        $found = findItemWithEmployeeId($avatars, $employeeId);
-        $avatar = $found ? $found->value : array();
+        $avatar = $this->dbconn->getData("SELECT * FROM avatars WHERE employeeId = '$employeeId'");
+        // $avatars = decodeJsonFile($this->avatarJsonPath);
+        // $found = findItemWithEmployeeId($avatars, $employeeId);
+        // $avatar = $found ? $found->value : array();
 
-        return encodeJson($avatar);
+        return $avatar;
     }
 }
 

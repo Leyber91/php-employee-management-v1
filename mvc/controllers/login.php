@@ -1,8 +1,6 @@
 <?php
-
 include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/login.php');
 include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
-
 
 class Login
 {

@@ -100,7 +100,8 @@ const server = {
 	then: (data) =>
 		data.map((employee) => {
 			return [
-				employee.id,
+				//TODO: Change dot notation with array index notation ex. employee[0];
+				employee[0],
 				employee.avatar ? JSON.stringify(employee.avatar.properties) : false,
 				`${employee.name} ${employee.lastName}`,
 				employee.role,

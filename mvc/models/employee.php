@@ -1,4 +1,6 @@
 <?php
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/awsMySqlConnector.php');
+
 class EmployeeModel
 {
     public $employeeJson;
@@ -10,6 +12,7 @@ class EmployeeModel
         require_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/avatar.php');
 
         $this->avatarModel = new AvatarModel();
+        $this->dbconn = new AwsMySqlConnector();
     }
 
     public function addEmployee(array $newEmployee)
@@ -57,14 +60,19 @@ class EmployeeModel
     public function getEmployees(array $ids = [])
     {
         if (empty($ids)) {
-            $employees = decodeJsonFile($this->employeeJson);
+
+            $employees = $this->dbconn->getData("SELECT * FROM employees");
             $allEmployees = array();
 
             foreach($employees as $employee) {
-                $avatar = json_decode($this->avatarModel->getAvatar($employee['id']), true);
-                $employee['avatar'] = $avatar;
+                $employeeId = $employee[0];
+                $avatar = $this->avatarModel->getAvatar($employeeId)[0];
+
+                array_push($employee, $avatar);
                 array_push($allEmployees, $employee);
             }
+
+            var_dump($allEmployees[0]);
 
             return encodeJson(array_values($allEmployees));
         }

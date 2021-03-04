@@ -1,26 +1,26 @@
 <?php
+include_once('/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/mvc/models/awsMySqlConnector.php');
 
 class LoginModel
 {
-
     function __construct()
     {
         define('USERS_JSON_PATH', "/Users/victorgreco/Documents/personal_projects/php-employee-management-v1/resources/users.json");
 
-
+        $this->dbconn = new AwsMySqlConnector();
     }
-    public function logIn(string $userEmail, string $password): bool
+    public function logIn(string $email, string $password): bool
     {
         session_start();
 
-        $user = $this->getUser($userEmail);
+        $user = $this->dbconn->getData("SELECT * FROM users WHERE email = '$email'");
     
         if (isset($user)) {
     
-            $isPasswordCorrect = password_verify($password, $user->password);
+            $isPasswordCorrect = password_verify($password, $user[0][2]);
     
             if ($isPasswordCorrect) {
-                $_SESSION['userId'] = $user->userId;
+                $_SESSION['userId'] = $user[0][0];
                 $_SESSION['time'] = time();
                 $_SESSION['lifeTime'] = 600;
     
