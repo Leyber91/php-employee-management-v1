@@ -102,14 +102,14 @@ const server = {
 			return [
 				//TODO: Change dot notation with array index notation ex. employee[0];
 				employee[0],
-				employee.avatar ? JSON.stringify(employee.avatar.properties) : false,
-				`${employee.name} ${employee.lastName}`,
-				employee.role,
-				employee.email,
-				employee.age,
-				employee.city,
-				employee.phoneNumber,
-				employee.gender
+				employee.avatar ? JSON.stringify(employee.avatar.properties) : false, //Needs to be customized for the avatar
+				`${employee[1]} ${employee[2]}`,
+				employee[3], //role 
+				employee[4], //email
+				employee[10], //age
+				employee[7], //city
+				employee[11], //phone number
+				employee[5] //gender
 			];
 		}),
 };
